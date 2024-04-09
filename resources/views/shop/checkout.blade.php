@@ -627,7 +627,7 @@
                                                     <button type="button" onclick="Auth()" class="mt-40" id="authbtn">
                                                         Pay
                                                         Now
-                                                        ${{ $subtotal }}
+{{--                                                        ${{ $subtotal }}--}}
                                                     </button>
                                                 </div>
                                             </div>
