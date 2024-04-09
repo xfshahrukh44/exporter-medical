@@ -1,0 +1,777 @@
+@media (max-width: 1440px) {
+  body {
+ overflow-x: hidden;
+
+}
+.con {
+ height: 822px;
+}
+
+.header_content {margin: 0px;}
+.video {
+ height: 1123px;
+}
+.single-product-wrap .product-content-wrap h2 {
+  font-size: 16px;
+}
+.sidebar-wrapper-mr1 {
+  height: 11100px;
+  overflow-y: scroll;
+}
+.sidebar-wrapper-mr1 {
+  margin-right: 0px;
+}
+.header-height-2 {
+  overflow-x: hidden;
+}
+img.thirdparty {
+  width: 68px !important;
+  right: 9px;
+  top: 3px;
+}
+}
+
+
+
+@media (max-width: 1199px){
+body {
+ overflow-x: hidden;
+
+}
+
+ .con {
+ height: 646px;
+}
+
+.header_content .virtual {
+ font-size: 60px;
+}
+
+.header_content p {
+ font-size: 14px;
+}
+
+.header_content {
+ margin-top: 55px;
+}
+
+.ClassesTopHeading h1 {
+ font-size: 39px;
+}
+
+.classesMainContent h6 {
+ font-size: 25px;
+}
+
+.classesMainContent p {
+ font-size: 14px;
+}
+
+.videoMainContent h1 {
+ font-size: 39px;
+}
+
+.videoMainContent p {
+ font-size: 12px;
+}
+
+.video {
+ height: 992px;
+}
+
+.coachesMainContent h1 {
+ font-size:
+43px;
+ margin-bottom: 13px;
+}
+
+.heading h1 {
+ font-size: 33px;
+}
+
+.slider-para p {
+ font-size: 14px;
+}
+
+h1.aos-init {}
+
+.heading1 h1 {
+ font-size: 39px;
+}
+
+.heading1 p {
+ margin: auto;
+}
+
+.serachbar input {
+ width: 52%;
+}
+
+.Quicklinkheading h5 {
+ font-size: 14px;
+}
+
+.Quicklinkheading ul li a {
+ font-size: 12px;
+}
+
+.FooterButtons .btnLivechat {
+ margin-top: 10px;
+}
+.slider1 .owl-theme .owl-nav {
+ left: 35rem;
+ top: 5rem;
+}
+.slidebar-product-wrap {
+  padding: 20px 10px 20px;
+}
+section.order-sec {
+  padding: 0px 0px 0;
+}
+.header-info > ul > li a {
+  font-size: 12px;
+}
+.sidebar-widget.sidebar-widget-padding-1 {
+  padding: 18px 10px 18px;
+}
+.sidebar-wrapper-mr1 {
+  height: 14668px;
+}
+.contact-info-wrap .single-contact-info2-wrap .single-contact-info2-content h3 a {
+  font-size: 23px;
+}
+.contact-info-wrap .single-contact-info2-wrap .single-contact-info2-content h2 a {
+  font-size: 30px;
+}
+.contact-info-wrap .single-contact-info2-wrap .single-contact-info2-content h4 a {
+  font-size: 18px;
+}
+.search-style-2 form input {
+  width: 207px;
+}
+
+.search-style-2 form select {
+  width: 148px;
+}
+
+}
+
+
+@media (max-width: 991px){
+  body {
+ overflow-x: hidden;
+
+}
+ .con {
+ height: 545px;
+}
+
+.header_content {
+ margin-top: 58px;
+}
+
+.header_content .virtual {
+ font-size: 42px;
+}
+
+.header_content .enroll {
+ padding: 10px 22px;
+ font-size: 14px;
+}
+
+.header_content p {
+ font-size: 13px;
+}
+
+.ClassesTopHeading h1 {
+ font-size: 36px;
+}
+
+.classesMainContent h6 {
+ font-size: 19px;
+}
+
+.btn-blue {
+ font-size: 14px;
+}
+
+.aboutContent h1 {
+ font-size: 37px;
+}
+
+.aboutContent p {
+ font-size: 13px;
+}
+
+.aboutContent h5 {
+ font-size: 18px;
+}
+
+.aboutContent .italic i {
+ font-size: 13px;
+}
+
+.learn_more .enroll {
+ font-size: 14px;
+ padding: 10px 22px;
+}
+
+.about {
+}
+
+.mainAboutDiv {
+ margin-top: 0px;
+}
+
+.videoMainContent h1 {
+ font-size: 31px;
+}
+
+.videoMainContent p {
+ font-size: 11px;
+}
+
+.video_btn a i {
+ font-size: 29px;
+}
+
+.coachesMainContent h1 {
+ font-size: 32px;
+}
+
+.mainContent-1 h2 {
+ font-size: 15px;
+}
+
+.mainContent-1 {
+ width: 125%;
+}
+
+.mainContent-1 h4 {
+ font-size: 13px;
+}
+
+.heading h1 {
+ font-size: 31px;
+}
+
+.slider-para p {
+ font-size: 12px;
+}
+
+.slider-content h3 {
+ font-size: 16px;
+}
+
+.slider1 .item .slider-image img {
+}
+
+.slider2 .slider-image img {
+}
+
+.slider1 .owl-theme .owl-nav {
+ left: 26rem;
+ top: 4rem;
+}
+
+.heading1 p {
+ font-size: 13px;
+}
+
+.heading1 h1 {
+ font-size: 34px;
+}
+
+.Quicklinkheading h5 {
+ font-size: 14px;
+}
+
+.Footerlogo p {
+ font-size: 15px;
+}
+
+.Quicklinkheading ul li a {
+ font-size: 14px;
+}
+
+.Quicklinkheading p {
+ font-size: 12px;
+ width: 288px;
+}
+
+.FooterIcons a {
+ height: 37px;
+}
+
+.btnLivechat {
+ font-size: 12px;
+}
+.slider-image img {
+ width: 100%!important;
+}
+.Quicklinkheading {
+ margin-top: 25px;
+}
+.banner-wrap .banner-img-zoom a img {
+  height: 200px;
+}
+.banner-wrap .banner-content-3 h2 {
+  font-size: 22px;
+  line-height: 21px;
+  margin: 3px 0 5px;
+  width: 80%;
+}
+.banner-wrap .banner-img-zoom a img {
+  height: 230px;
+}
+.shop-topbar-wrapper .totall-product p {
+  font-size: 12px;
+}
+.sidebar-wrapper-mr1 {
+  height: 21150px;
+}
+.privacy-policy-area h2 {
+  font-size: 25px;
+}
+.logo.logo-width-1 a img {
+  width: 100px;
+}
+.header-bottom {
+  padding: 10px 0;
+}
+.pro-pagination-style ul {
+  overflow-x: scroll;
+}
+.sidebar-wrapper {
+  margin-top: 20px;
+}
+.shop-topbar-wrapper {
+  margin: 0 0 15px;
+}
+
+  
+}
+
+@media (max-width: 767px){
+    form.form {
+        width: 100%;
+        margin-top: 35px;
+        padding: 0px 15px;
+    }
+  body {
+ overflow-x: hidden;
+
+}
+ .mainContent-1 h2 {
+ font-size: 15px;
+}
+
+.mainContent-1 img {
+ width: 186px;
+}
+
+.mainContent-1 {
+ width: 207px;
+}
+
+.coachesMainContent p {
+ font-size: 11px;
+}
+
+.coachesMainContent h1 {
+ font-size: 30px;
+}
+
+.videoMainContent h1 {
+ font-size: 24px;
+ font-weight: 800;
+}
+
+.images .img img {
+ margin-top: 10px;
+}
+
+.mainAboutDiv {
+ margin-bottom: 17px;
+}
+
+.ClassesTopHeading h1 {
+ font-size: 34px;
+}
+
+.con {
+ height: 440px;
+}
+
+.header_content .virtual {
+ font-size: 29px;
+}
+
+ .navbar-brand h1 {
+ font-size: 28px;
+}
+
+.header_content {
+ margin-top: 11px;
+}
+
+.header_content p {
+ font-size: 11px;
+ width: 269px;
+ margin-bottom: 7px;
+}
+
+.navbar {
+ margin-top: 10px;
+}
+
+.header_content .enroll {
+ font-size: 13px;
+ padding: 10px 19px;
+}
+
+.learn_more .enroll {
+ font-size: 13px;
+ padding: 10px 19px;
+}
+
+.heading h1 {
+ font-size: 28px;
+ margin-bottom: 12px;
+}
+
+.slider-image img {
+ width: 36%!important;
+ margin: auto!important;
+}
+
+.slider1 .owl-theme .owl-nav {
+ top: 6rem;
+ left: 27rem;
+}
+
+.heading1 h1 {
+ font-size: 28px;
+}
+
+.heading1 p {
+ font-size: 12px;
+}
+
+.serachbar input {
+ width: 52%;
+ height: 53px;
+}
+
+.serachbar .btnGet {
+ padding: 17px 30px 13px 28px;
+ font-size: 14px;
+}
+.sidebar-widget .sidebar-categories-list ul li {
+  padding-left: 9px;
+  margin-bottom: 4px;
+}
+.shop-topbar-wrapper .sort-by-product-area .sort-by-product-wrap {
+  padding: 8px 8px 8px 8px;
+}
+.shop-topbar-wrapper .sort-by-product-area .sort-by-product-wrap .sort-by span {
+  font-size: 13px;
+}
+.single-contact-info3-wrap .single-contact-info3-content p {
+  font-size: 15px;
+}
+.shop-topbar-wrapper .totall-product p {
+  font-size: 14px;
+}
+
+.product-details-content.pro-details-content-pl {
+  padding-left: 20px;
+}
+
+}
+
+@media (max-width: 575px){
+.banner-content-3 h2 {
+    font-size: 10px;
+}
+
+
+.banner-wrap .banner-content-3 h2 {
+    font-size: 16px;
+}
+
+.banner-content-3 p {
+    margin: 0 !important;
+}
+form#add-cart {
+    margin-left: 13px;
+}
+ body {
+ overflow-x: hidden;
+
+}
+.videoMainContent h1 {
+ font-size: 18px;
+ font-weight: 800;
+}
+
+.video_btn a i {
+ font-size: 23px;
+ padding: 12px 11px 12px 11px;
+}
+
+.coachesMainContent h1 {
+ font-size: 22px;
+ font-weight: 800;
+}
+
+.heading h1 {
+ font-size: 19px;
+ font-weight: 800;
+}
+
+.heading p {
+ font-size: 11px;
+}
+
+.Footerlogo p {font-size: 13px;}
+
+.FooterIcons a {
+ height: 47px;
+}
+
+.heading1 h1 {
+ font-size: 25px;
+}
+ .con {
+ height: 330px;
+}
+
+.header_content .virtual {
+ font-size: 28px;
+}
+
+.header_content .enroll {
+ font-size: 10px;
+}
+
+.header_content p {
+ font-size: 10px;
+ width: 215px;
+}
+
+.navbar-brand h1 {
+ font-size: 26px;
+}
+
+.ClassesTopHeading h1 {
+ font-size: 28px;
+}
+
+.learn_more .enroll {
+ font-size: 11px;
+}
+
+.slider1 .owl-theme .owl-nav {
+ left: 18rem;
+ top: 3rem;
+}
+.header_content {
+ margin-top: 8px;
+}
+div#slick-slide00 {
+  height: 200px;
+}
+div#slick-slide01 {
+  height: 200px;
+}
+.dot-style-1.dot-style-1-position-1 ul {
+  bottom: 5px;
+}
+.logo.logo-width-1 a img {
+  width: 70px;
+}
+.banner-wrap .banner-img-zoom a img {
+  height: 180px;
+}
+.single-product-wrap .product-content-wrap h2 {
+  font-size: 13px;
+}
+.slidebar-product-wrap .slidebar-product-details ul li a {
+  font-size: 12px;
+}
+.slidebar-product-wrap {
+  padding: 10px 10px 10px;
+}
+.product-area {
+  overflow-x: hidden;
+}
+.slidebar-product-wrap {
+  padding: 5px 5px 5px 5px;
+  margin: 5px 5px 5px 5px;
+}
+.single-product-wrap .product-img-action-wrap .product-img a img {
+  height: 200px;
+}
+.footer-widget .footer-info-list ul li a {
+  text-align: center;
+}
+.footer-widget h3.footer-title {
+  text-align: center;
+}
+.copyright p {
+  text-align: center;
+}
+.footer-logo a {
+  text-align: center;
+}
+.footer-widget .app-visa-wrap p {
+  text-align: center;
+}
+.app-visa-wrap h5 {
+  text-align: center;
+}
+.app-visa-wrap {
+  text-align: center;
+}
+.mobile-header-wrapper-style .mobile-header-wrapper-inner .mobile-header-top .mobile-header-logo a img {
+  width: 66px;
+}
+.contact-info-wrap .single-contact-info2-wrap .single-contact-info2-content h2 a {
+  font-size: 16px;
+}
+.contact-info-wrap .single-contact-info2-wrap .single-contact-info2-content h3 a {
+  font-size: 16px;
+}
+.contact-info-wrap .single-contact-info2-wrap .single-contact-info2-content h4 a {
+  font-size: 16px;
+}
+.privacy-policy-area h2 {
+  font-size: 16px;
+}
+.privacy-policy-area p {
+  font-size: 13px;
+  line-height: 1.54;
+  margin-bottom: 12px;
+}
+.footer-logo.logo-width-1 a img {
+  width: 80px;
+}
+.footer-widget .app-visa-wrap p {
+  font-size: 13px;
+}
+.footer-widget h3.footer-title {
+  font-size: 16px;
+}
+.footer-widget h3.footer-title {
+  margin: 0 0 6px;
+}
+.sidebar-widget .sidebar-categories-list ul li a {
+  font-size: 10px;
+}
+.sidebar-widget .sidebar-categories-list ul li {
+  padding-left: 7px;
+  margin-bottom: 0px;
+}
+.sidebar-widget.sidebar-widget-padding-1 {
+  padding: 6px 6px 6px;
+}
+.custom-container .row div[class^="col-"] {
+  padding-left: 5px;
+  padding-right: 10px;
+}
+.single-product-wrap .product-img-action-wrap .product-img a img {
+  height: 160px;
+  max-width: 220px;
+}
+.shop-bottom-area {
+  overflow-x: hidden;
+}
+.single-product-wrap.mb-50 {
+  margin-bottom: 20px;
+  padding: 0px 10px;
+}
+.shop-topbar-wrapper .totall-product p {
+  font-size: 12px;
+}
+.sidebar-wrapper-mr1 {
+  height: 11840px;
+}
+.section-title-2 h2 {
+  font-size: 15px;
+}
+.single-product-wrap .product-content-wrap h2 {
+  margin: 2px 0 2px;
+}
+.single-product-wrap .product-content-wrap .product-price span {
+  font-size: 14px;
+}
+.pro-pagination-style ul li a {
+  width: 0px;
+  height: 35px;
+  line-height: 43px;
+  font-size: 12px;
+  margin: 0 9px;
+}
+.sidebar-wrapper-mr1 {
+  overflow-x: hidden;
+}
+.single-contact-info3-wrap .single-contact-info3-content h3 {
+  font-size: 14px;
+}
+.single-contact-info3-wrap .single-contact-info3-content p {
+  font-size: 13px;
+}
+.footer-widget .footer-info-list ul li {
+  margin: 0 0 3px;
+}
+.mobile-header-wrapper-style .mobile-header-wrapper-inner .mobile-header-content-area .mobile-menu-wrap nav .mobile-menu li {
+  padding: 12px 0 12px;
+}
+.mobile-header-wrapper-style .mobile-header-wrapper-inner .mobile-header-content-area .mobile-header-info-wrap {
+  padding: 15px 0 15px;
+  margin-bottom: 30px;
+}
+.covid-update.covid-update-mobile {
+  padding: 0px 0 12px;
+}
+.mobile-search {
+  padding: 15px 0 15px;
+}
+.mobile-header-wrapper-style .mobile-header-wrapper-inner .mobile-header-content-area .mobile-menu-wrap nav .mobile-menu li {
+  padding: 10px 0 10px;
+}
+.categori-button-active-2 {
+  padding: 15px 0;
+}
+.mobile-header-wrapper-style .mobile-header-wrapper-inner .mobile-header-content-area .mobile-header-info-wrap .single-mobile-header-info a {
+  font-size: 14px;
+}
+.mobile-header-wrapper-style .mobile-header-wrapper-inner .mobile-header-content-area .mobile-header-info-wrap .single-mobile-header-info {
+  margin-bottom: 6px;
+}
+.mobile-header-wrapper-style .mobile-header-wrapper-inner .mobile-header-content-area {
+  padding: 30px 10px 0px;
+}
+.mobile-header-wrapper-style .mobile-header-wrapper-inner .mobile-header-content-area .mobile-header-info-wrap {
+  margin-bottom: 20px;
+}
+.covid-update p a {
+  margin: 0 6px 0 0;
+  padding: 1px 8px;
+  font-size: 10px;
+}
+.single-product-wrap.mb-50 {
+  text-align: center;
+}
+.single-product-wrap .product-content-wrap h2 {
+  width: 80%;
+  margin: auto;
+}
+.sidebar-wrapper-mr1 {
+  height: 75vh;
+  position: static;
+  width: 100%;
+}
+
+}
