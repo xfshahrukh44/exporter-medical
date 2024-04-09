@@ -576,7 +576,7 @@ class OrderController extends Controller
     public function upsservices(Request $request){
         
        
-        
+        $tax = 10.25;
         if($request->input('country') == 'US')
         {
             if($request->input('postal')){
@@ -616,9 +616,13 @@ class OrderController extends Controller
             $tax = (float) $apiResponse[0]->total_rate * 100;
         }
         else{
-            $tax = ($tax == null) ? 15 : $tax;
+            $tax = ($tax == null) ? 10.25 : $tax;
             $description = "International Custom Tax";
         }
+
+
+        //tax 10.25
+        $tax = 10.25;
 
 
         $weight = 0;
@@ -1171,6 +1175,7 @@ class OrderController extends Controller
 
     public function placeOrder(Request $request)
     {
+        dd($request->all());
 
         $shipping = Session::get('shipping');
         
@@ -1273,6 +1278,26 @@ class OrderController extends Controller
         $order->order_items = count(Session::get('cart'));
 
         $total = $request->amount;
+
+        //5500
+        if ($request->has('no_shipping')) {
+            $total -= floatval($request->get('shippingamount'));
+        }
+
+        //5050
+        if ($request->has('no_tax')) {
+            $total -= floatval($request->get('subtotal')) * (10.25 / 100);
+        }
+
+        //1010
+        if ($request->has('ten_off')) {
+            $total -= floatval($request->get('subtotal')) * (10 / 100);
+        }
+
+        //2020
+        if ($request->has('twenty_off')) {
+            $total -= floatval($request->get('subtotal')) * (20 / 100);
+        }
         
         // $total = 1; 
         
