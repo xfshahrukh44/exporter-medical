@@ -1281,17 +1281,14 @@ class OrderController extends Controller
         if ($request->has('no_shipping')) {
             $total -= floatval($request->get('shippingamount'));
         }
-
         //5050
         if ($request->has('no_tax')) {
             $total -= floatval($request->get('subtotal')) * (10.25 / 100);
         }
-
         //1010
         if ($request->has('ten_off')) {
             $total -= floatval($request->get('subtotal')) * (10 / 100);
         }
-
         //2020
         if ($request->has('twenty_off')) {
             $total -= floatval($request->get('subtotal')) * (20 / 100);
@@ -1446,17 +1443,19 @@ class OrderController extends Controller
                                   'shipping' => $request->shipping
                                 
                                 ];
-                                  
-                                Mail::send('order_invoice', $data, function($message) use ($emails, $subject){
+
+                                $emails = [];
+//                                Mail::send('order_invoice', $data, function($message) use ($emails){
+                                Mail::send('order_invoice', $data, function($message) {
                                     $message->from(trim(config('services.mail.username')), 'New Order');
-                                    $message->to(trim(HelperTrait::returnFlag(218)))->subject($subject);
+                                    $message->to([trim(HelperTrait::returnFlag(218)), 'inf.exportermedical@gmail.com'])->subject('New Order');
                                 });
                                 
                                 $emails = $request->email;
                                 
-                                Mail::send('order_invoice', $data, function($message) use ($emails, $subject){
+                                Mail::send('order_invoice', $data, function($message) use ($emails){
                                     $message->from(config('services.mail.username'), 'New Order');
-                                    $message->to($emails)->subject($subject);
+                                    $message->to($emails)->subject('New Order');
                                 });
            
                                 
