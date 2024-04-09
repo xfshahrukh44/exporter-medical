@@ -315,3 +315,21 @@ Route::resource('upcomingclasses', 'UpcomingclassesController');
 Route::resource('subcategory/sub-category', 'subcategory\SubCategoryController');
 
 Route::resource('statetax/states-tax', 'statetax\StatesTaxController');
+
+
+Route::get('/ayy',function(){
+    dump('ALL PRODUCTS');
+    dump(\App\Product::all()->count());
+
+    dump('PRODUCTS WITH IMAGES');
+    dump(\App\Product::orWhere(function ($q) {
+        return $q->where('image', '!=', 'uploads/products/')
+            ->orHaving('product_images', '>', 0);
+    })->count());
+
+    dump('PRODUCTS WITHOUT IMAGES');
+    dd(\App\Product::orWhere(function ($q) {
+        return $q->where('image', 'uploads/products/')
+            ->orHaving('product_images', '=', 0);
+    })->count());
+});

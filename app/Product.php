@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\ProductImage;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -42,6 +43,11 @@ class Product extends Model
     public function subcategorys()
     {
         return $this->belongsTo('App\Models\SubCategory', 'subcategory', 'id');
+    }
+
+    public function product_images ()
+    {
+        return $this->hasMany(ProductImage::class, 'product_id');
     }
 
 }

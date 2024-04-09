@@ -23,6 +23,7 @@ use App\orders_products;
 
 
 use Illuminate\Contracts\Session\Session as SessionSession;
+use function Clue\StreamFilter\fun;
 
 class ProductController extends Controller
 {
@@ -277,7 +278,7 @@ class ProductController extends Controller
 	    $category = Request::get('category');
 	    $name = Request::get('name');
 
-	    $shops = new Product;
+	    $shops = Product::query();
 
 	    if($category != null){
 	        $shops = $shops->where('category', $category);
@@ -286,6 +287,27 @@ class ProductController extends Controller
 	    if($name != null){
 	        $shops = $shops->where('product_title', 'LIKE', "%$name%")->orWhere('sku', $name)->orWhere('item_number', $name);
 	    }
+
+//	    //eliminate products without images unless searched by SKU or Item number or Title
+//	    $shops->where(function ($q) {
+//	        return $q->where('image', '!=', 'uploads/products/')
+//                ->where('image', '!=', 'uploads/products/10055B.jpg')
+//                ->where('image', '!=', 'uploads/products/10010B.JPG')
+//                ->where('image', '!=', 'uploads/products/10010C.jpg')
+//                ->where('image', '!=', 'uploads/products/10010D.JPG')
+//                ->where('image', '!=', 'uploads/products/10012.jpg')
+//                ->where('image', '!=', 'uploads/products/100357.jpg')
+//                ->where('image', '!=', 'uploads/products/10010E.jpg')
+//                ->where('image', '!=', 'uploads/products/0090TRP.jpg')
+//                ->where('image', '!=', 'uploads/products/no_image.jpg')
+//                ->having('product_images', '>', 0);
+//        })
+//        ->orWhere(function ($q) use ($name) {
+//            return $q->when(!is_null($name), function ($q) use ($name) {
+//                return $q->where('product_title', 'LIKE', "%$name%")->orWhere('sku', $name)->orWhere('item_number', $name);
+//            });
+//        });
+
 	    $shops = $shops->paginate(100);
 
 
