@@ -830,7 +830,8 @@
                                         $('#upsli').slideDown();
                                         $('#grandtotal').text('$ ' + ordertotal.toFixed(2));
                                         $('#amount').val(Number(ordertotal.toFixed(2)));
-                                        $('#authbtn').text('Pay Now $' + ordertotal.toFixed(2));
+                                        // $('#authbtn').text('Pay Now $' + ordertotal.toFixed(2));
+                                        $('#authbtn').text('Pay Now');
                                         $('#shippinginput').val("UPS");
                                         $('#accordion').slideDown();
 
@@ -875,7 +876,8 @@
                                         $('#shippingamount').val(response.message);
                                         $('#shippinginput').val("DHL");
                                         $('#grandtotal').text('$ ' + total.toFixed(2));
-                                        $('#authbtn').text('Pay Now $' + total.toFixed(2));
+                                        // $('#authbtn').text('Pay Now $' + total.toFixed(2));
+                                        $('#authbtn').text('Pay Now');
                                         $('#amount').val(Number(total.toFixed(2)));
                                         $('#accordion').slideDown();
                                         $('#upsli').slideDown();
@@ -952,7 +954,8 @@
                                     $('#shippingdiv').slideDown();
                                     $('#upsli').hide();
                                     $('#fedexli').slideDown();
-                                    $('#authbtn').text('Pay Now $' + ordertotal);
+                                    // $('#authbtn').text('Pay Now $' + ordertotal);
+                                    $('#authbtn').text('Pay Now');
                                     $('#amount').val(ordertotal);
                                     $('#shippinginput').val("Fedex");
                                     $('#accordion').slideDown();
