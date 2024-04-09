@@ -1175,8 +1175,6 @@ class OrderController extends Controller
 
     public function placeOrder(Request $request)
     {
-        dd($request->all());
-
         $shipping = Session::get('shipping');
         
         request()->validate([
