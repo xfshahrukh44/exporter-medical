@@ -88,7 +88,7 @@
         </div>
         <div class="row">
             @foreach ($product as $products)
-                @if($products->thumb_image == '' || @getimagesize($products->image) != false)
+                @if($products->thumb_image != '' || @getimagesize($products->image) != false)
                     <div class="col-xl-3 col-lg-4 col-md-4 col-12 col-sm-6">
                         <div class="single-product-wrap mb-50 wow tmFadeInUp">
                             <div class="product-img-action-wrap mb-10">
