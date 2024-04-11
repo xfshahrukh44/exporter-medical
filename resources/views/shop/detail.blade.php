@@ -150,7 +150,8 @@
                                 <div class="entry-product-section-heading">
                                     <h2>Description</h2>
                                 </div>
-                                {!! $product_detail->description !!}
+{{--                                {!! $product_detail->description !!}--}}
+                                {!! str_replace('src="/static', 'src="www.choiceonemedical.com/static', $product_detail->description) !!}
                             </div>
                         </div>
                     </div>
