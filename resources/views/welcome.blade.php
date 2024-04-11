@@ -93,7 +93,7 @@
                     <div class="product-img-action-wrap mb-10">
                         <div class="product-img product-img-zoom">
                             <a href="{{ route('shopDetail', ['id' => $products->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $products->product_title))) ]) }}">
-                                @if (@getimagesize($products->thumb_image ) != false)
+                                @if ($products->thumb_image == '' || @getimagesize($products->thumb_image ) != false)
                                 <img class="default-img" src="{{ asset($products->thumb_image ) }}" alt="">
                                 @else
                                 <img class="default-img" src="{{ asset('uploads/products/no_image.jpg') }}" alt="">
