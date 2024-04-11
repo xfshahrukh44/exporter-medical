@@ -151,7 +151,7 @@
                                     <h2>Description</h2>
                                 </div>
 {{--                                {!! $product_detail->description !!}--}}
-                                {!! str_replace('src="/static', 'src="www.choiceonemedical.com/static', $product_detail->description) !!}
+                                {!! str_replace('src="/static', 'src="https://www.choiceonemedical.com/static', $product_detail->description) !!}
                             </div>
                         </div>
                     </div>
