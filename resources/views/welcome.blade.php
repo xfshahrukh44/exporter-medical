@@ -88,42 +88,44 @@
         </div>
         <div class="row">
             @foreach ($product as $products)
-            <div class="col-xl-3 col-lg-4 col-md-4 col-12 col-sm-6">
-                <div class="single-product-wrap mb-50 wow tmFadeInUp">
-                    <div class="product-img-action-wrap mb-10">
-                        <div class="product-img product-img-zoom">
-                            <a href="{{ route('shopDetail', ['id' => $products->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $products->product_title))) ]) }}">
-                                @if ($products->thumb_image == '' || @getimagesize($products->thumb_image ) != false)
-                                <img class="default-img" src="{{ asset($products->thumb_image ) }}" alt="">
-                                @else
-                                <img class="default-img" src="{{ asset('uploads/products/no_image.jpg') }}" alt="">
-                                @endif
-                            </a>
-                        </div>
-                        <div class="product-action-1">
-                            <a aria-label="Add To Cart" href="{{ route('shopDetail', ['id' => $products->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $products->product_title))) ]) }}">
-                                <i class="fa fa-shopping-bag"></i>
-                            </a>
+                @if($products->thumb_image == '' || @getimagesize($products->image) != false ||)
+                    <div class="col-xl-3 col-lg-4 col-md-4 col-12 col-sm-6">
+                        <div class="single-product-wrap mb-50 wow tmFadeInUp">
+                            <div class="product-img-action-wrap mb-10">
+                                <div class="product-img product-img-zoom">
+                                    <a href="{{ route('shopDetail', ['id' => $products->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $products->product_title))) ]) }}">
+                                        @if ($products->thumb_image == '' || @getimagesize($products->thumb_image ) != false)
+                                        <img class="default-img" src="{{ asset($products->thumb_image ) }}" alt="">
+                                        @else
+                                        <img class="default-img" src="{{ asset('uploads/products/no_image.jpg') }}" alt="">
+                                        @endif
+                                    </a>
+                                </div>
+                                <div class="product-action-1">
+                                    <a aria-label="Add To Cart" href="{{ route('shopDetail', ['id' => $products->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $products->product_title))) ]) }}">
+                                        <i class="fa fa-shopping-bag"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-content-wrap">
+                                <div class="product-category">
+                                    <a href="{{ route('categoryDetail', ['id' => $products->categorys->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $products->categorys->name)))]) }}">{{ $products->categorys->name }}</a>
+                                </div>
+                                <h2><a href="{{ route('shopDetail', ['id' => $products->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $products->product_title))) ]) }}">{{ $products->product_title }}</a></h2>
+                                <div class="product-price">
+                                    @if((float)$products->list_price < 25.00 || (float)$products->list_price > 999.99)
+                                    <a class="quote" href="tel:{{ App\Http\Traits\HelperTrait::returnFlag(59) }}">
+                                        <p>Call us for Pricing</p>
+                                        <!--<img src="{{ asset('images/phone-icon.png') }}">-->
+                                    </a>
+                                    @else
+                                    <span>${{ $products->list_price }}</span>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="product-content-wrap">
-                        <div class="product-category">
-                            <a href="{{ route('categoryDetail', ['id' => $products->categorys->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $products->categorys->name)))]) }}">{{ $products->categorys->name }}</a>
-                        </div>
-                        <h2><a href="{{ route('shopDetail', ['id' => $products->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $products->product_title))) ]) }}">{{ $products->product_title }}</a></h2>
-                        <div class="product-price">
-                            @if((float)$products->list_price < 25.00 || (float)$products->list_price > 999.99)
-                            <a class="quote" href="tel:{{ App\Http\Traits\HelperTrait::returnFlag(59) }}">
-                                <p>Call us for Pricing</p>    
-                                <!--<img src="{{ asset('images/phone-icon.png') }}">-->
-                            </a>
-                            @else
-                            <span>${{ $products->list_price }}</span>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-            </div>
+                @endif
             @endforeach
         </div>
     </div>
