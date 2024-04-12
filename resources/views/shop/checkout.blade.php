@@ -821,7 +821,8 @@
                                         var tax = Number('{{ $subtotal }}') + ((Number(response.tax) / 100) * Number('{{ $subtotal }}'));
                                         $("#ordertotalli h4").text('$' + tax.toString());
                                         var ordertotal = Number(response.upsamount) + Number(tax);
-                                        $('#taxli  h4').text(response.tax.toString() + "%")
+                                        // $('#taxli  h4').text(response.tax.toString() + "%")
+                                        $('#taxli  h4').text('$' + ((response.tax / 100) * parseFloat('{{$subtotal}}')).toFixed(2).toString())
                                         if (response.description != null) {
                                             $('#desctax h4').text(response.description);
                                             $('#desctax').slideDown();
