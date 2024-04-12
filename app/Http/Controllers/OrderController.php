@@ -1421,8 +1421,6 @@ class OrderController extends Controller
                           if($response_shipping){
                                 
                                 $order->track_id = $response_shipping;
-                              
-                               
                                 
                                 $data = [
                                 
@@ -1435,11 +1433,12 @@ class OrderController extends Controller
                                   'tracking' => $order->track_id,
                                   'transaction' => $tresponse->getTransId(),
                                   'shipping' => $request->input('shipping'),
-                                  'ship_amount' => $request->shippingamount,
+                                  'ship_amount' => $request->has('no_shipping') ? 0.00 : $request->shippingamount,
+                                  'tax_amount' => $request->has('no_tax') ? 0.00 : floatval($request->get('subtotal')) * (10.25 / 100),
                                   //'ship_amount' => 0,
                                   'cart' => Session::get('cart'),
                                   'amount' => $total,
-                                  'shipping_amount' => $request->shippingamount,
+                                  'shipping_amount' => $request->has('no_shipping') ? 0.00 : $request->shippingamount,
                                   //'shipping_amount' => 0,
                                   'shipping' => $request->shipping
                                 
