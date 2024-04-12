@@ -393,7 +393,7 @@
                                         <div class="select-style col-md-12  mb-35 input-style">
                                             <label>Country *</label>
                                             <input type="text" name="country" id="country" class="billing-address"
-                                                   value="DE"> <!-- readonly -->
+                                                   value="US"> <!-- readonly -->
                                             <!--<input type="hidden" name="country" id="country" class="billing-address" value="US">-->
                                             <!--<select class="select-active form-control" name="country" id="country">-->
                                         <!--    @foreach ($country as $item)-->
@@ -778,6 +778,7 @@
                 $('#order-place').append('<input type="hidden" name="subtotal" value="{{ $subtotal }}" id="fedex_token">');
 
                 $('#upsbutton').click(function () {
+                    $('#servname').parent().prop('hidden', ($('#country').val() == 'US'));
                     $('.shippingbtn').removeClass('active');
                     $('#loader').show();
                     $(this).addClass("active");
@@ -791,7 +792,6 @@
                     if (country == '' || address == '' || postal == '' || city == '') {
                         toastr.error('Please fill all address fields')
                     } else {
-                        $('#servname').parent().prop('hidden', ($('#country').val() == 'US'));
                         // $('#li_hidden').prop('hidden', false);
                         if ($('#country').val() == 'US') {
                             $.ajaxSetup({
@@ -1254,7 +1254,6 @@
             $('.btn_apply_coupon').on('click', (e) => {
                 e.preventDefault();
 
-                let coupon_value = $('.text_coupon').val();
                 let url = '{{route('verify-coupon', 'temp')}}'
 
                 $.ajax({
@@ -1282,6 +1281,7 @@
                             $('.btn_apply_coupon').parent().remove();
                             toastr.success(data2.message);
                         } else {
+                            $('.text_coupon').val('');
                             toastr.error(data2.message);
                         }
                     },
