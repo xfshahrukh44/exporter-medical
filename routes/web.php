@@ -316,49 +316,29 @@ Route::resource('subcategory/sub-category', 'subcategory\SubCategoryController')
 
 Route::resource('statetax/states-tax', 'statetax\StatesTaxController');
 
+//verify-coupon
+Route::get('verify-coupon/{code}', function ($code) {
+    if (!$coupon = \App\Models\Coupon::where('code', $code)->first()) {
+        return json_encode([
+            'success' => false,
+            'data' => [],
+            'message' => 'Invalid coupon code.',
+            'errors' => [],
+        ]);
+    }
+
+    return json_encode([
+        'success' => true,
+        'data' => [
+            'coupon' => $coupon
+        ],
+        'message' => $coupon->title . ' coupon applied!',
+        'errors' => [],
+    ]);
+})->name('verify-coupon');
+
 
 Route::get('/ayy',function(){
-//    foreach (\App\Product::whereIn('id', [
-//        17128,
-//        17129,
-//        17130,
-//        17131,
-//        17132,
-//        17133,
-//        17134,
-//        17135,
-//        17136,
-//        17137,
-//        17138,
-//        17139,
-//        17140,
-//        17141,
-//        17142,
-//        17143,
-//        17144,
-//        17145,
-//        17146,
-//        17147,
-//        17148,
-//        17149,
-//        17150,
-//        17151,
-//        17152,
-//        17153,
-//        17154,
-//        17155,
-//        17156,
-//        17157,
-//        17158,
-//        17159,
-//        17160,
-//        17161,
-//        17162,
-//        17163,
-//        17164,
-//    ])->get() as $product) {
-//        $product->sku = '000' . strval($product->id);
-//        $product->item_number = 'PCAP-' . mt_rand(1000, 9999);
-//        $product->save();
-//    }
+    //
 });
+Route::resource('admin/coupon', 'Admin\CouponController');

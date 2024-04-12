@@ -1277,21 +1277,26 @@ class OrderController extends Controller
 
         $total = $request->amount;
 
-        //5500
-        if ($request->has('no_shipping')) {
-            $total -= floatval($request->get('shippingamount'));
-        }
-        //5050
-        if ($request->has('no_tax')) {
-            $total -= floatval($request->get('subtotal')) * (10.25 / 100);
-        }
-        //1010
-        if ($request->has('ten_off')) {
-            $total -= floatval($request->get('subtotal')) * (10 / 100);
-        }
-        //2020
-        if ($request->has('twenty_off')) {
-            $total -= floatval($request->get('subtotal')) * (20 / 100);
+//        //5500
+//        if ($request->has('no_shipping')) {
+//            $total -= floatval($request->get('shippingamount'));
+//        }
+//        //5050
+//        if ($request->has('no_tax')) {
+//            $total -= floatval($request->get('subtotal')) * (10.25 / 100);
+//        }
+//        //1010
+//        if ($request->has('ten_off')) {
+//            $total -= floatval($request->get('subtotal')) * (10 / 100);
+//        }
+//        //2020
+//        if ($request->has('twenty_off')) {
+//            $total -= floatval($request->get('subtotal')) * (20 / 100);
+//        }
+
+        //discount
+        if ($request->has('discount') && floatval($request->get('discount')) != 0.00) {
+            $total -= floatval($request->get('discount'));
         }
         
         // $total = 1; 

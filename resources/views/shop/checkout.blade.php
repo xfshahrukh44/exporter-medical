@@ -325,6 +325,7 @@
             <input type="hidden" name="payment_method" id="payment_method" value="AuthNet"/>
             <input type="hidden" name="shipping" id="shippinginput" value=""/>
             <input type="hidden" name="shippingamount" id="shippingamount" value=""/>
+            <input hidden id="discount" name="discount" value="0">
 
             <input type="hidden" name="amount" id="amount" value=""/>
 
@@ -555,6 +556,11 @@
                                             <li>
                                                 Shipping Total
                                                 <h4 id="totalshippingh4">$0.00</h4>
+                                            </li>
+
+                                            <li id="li_discount" hidden>
+                                                Discount
+                                                <h4 id="h4_discount">asd asd ($0.00)</h4>
                                             </li>
 
 
@@ -1244,49 +1250,85 @@
                 return $('#grandtotal').html('$ ' + total.toFixed(2));
             }
 
-            $('.btn_apply_coupon').on('click', () => {
-                let coupon_value = $('.text_coupon').val();
+            $('.btn_apply_coupon').on('click', (e) => {
+                e.preventDefault();
 
-                if (coupon_value == '5500') {
-                    $('#order-place').append('<input hidden name="no_shipping" value="true">');
-                    mutate_front_total(parseFloat($('#totalshippingh4').html().replace('$', '')) * -1);
-                    $('#totalshippingh4').html('$ 0');
-                    toastr.success('No Shipping coupon applied!');
-                    $('.btn_apply_coupon').parent().remove();
-                } else if (coupon_value == '5050') {
-                    $('#order-place').append('<input hidden name="no_tax" value="true">');
-                    mutate_front_total(parseFloat($('#li_subtotal').find('h4').html().replaceAll('$', '')) * (parseFloat($('#taxli').find('h4').html().replaceAll('$', '')) / 100) * -1);
-                    $('#taxli').find('h4').html('0%');
-                    toastr.success('No Tax coupon applied!');
-                    $('.btn_apply_coupon').parent().remove();
-                } else if (coupon_value == '1010') {
-                    $('#order-place').append('<input hidden name="ten_off" value="true">');
-                    mutate_front_total(parseFloat($('#li_subtotal').find('h4').html().replaceAll('$', '')) * 0.1 * -1);
-                    // $('#taxli').find('h4').html('0%');
-                    toastr.success('10% off coupon applied!');
-                    $('.btn_apply_coupon').parent().remove();
-                } else if (coupon_value == '2020') {
-                    $('#order-place').append('<input hidden name="twenty_off" value="true">');
-                    mutate_front_total(parseFloat($('#li_subtotal').find('h4').html().replaceAll('$', '')) * 0.1 * -1);
-                    // $('#taxli').find('h4').html('0%');
-                    toastr.success('20% off coupon applied!');
-                    $('.btn_apply_coupon').parent().remove();
-                } else if (coupon_value == 'REP01') {
-                    $('#order-place').append('<input hidden name="sales_rep_01" value="true">');
-                    toastr.success('Sales rep coupon applied!');
-                    $('.btn_apply_coupon').parent().remove();
-                } else if (coupon_value == 'REP02') {
-                    $('#order-place').append('<input hidden name="sales_rep_02" value="true">');
-                    toastr.success('Sales rep coupon applied!');
-                    $('.btn_apply_coupon').parent().remove();
-                } else if (coupon_value == 'REP03') {
-                    $('#order-place').append('<input hidden name="sales_rep_03" value="true">');
-                    toastr.success('Sales rep coupon applied!');
-                    $('.btn_apply_coupon').parent().remove();
-                } else {
-                    toastr.error('Invalid coupon.');
-                    $('.text_coupon').val('');
-                }
+                let coupon_value = $('.text_coupon').val();
+                let url = '{{route('verify-coupon', 'temp')}}'
+
+                $.ajax({
+                    url: url.replaceAll('temp', $('.text_coupon').val()),
+                    method: 'GET',
+                    data: {
+                        code: $('.text_coupon').val()
+                    },
+                    success: (data) => {
+                        let data2 = JSON.parse(data);
+                        console.log(data2);
+                        if (data2.success) {
+                            let discount;
+                            if (data2.data.coupon.off_amount == 0) {
+                                discount = parseFloat('{{$subtotal}}') * (parseFloat(data2.data.coupon.off_percentage) / 100);
+                            } else if (data2.data.coupon.off_percentage == 0) {
+                                discount = parseFloat(data2.data.coupon.off_amount);
+                            }
+
+                            mutate_front_total(discount * -1);
+                            $('#discount').val(discount);
+                            $('#h4_discount').html(data2.data.coupon.title + ' ($'+discount.toFixed(2)+')');
+                            $('#li_discount').prop('hidden', false);
+
+                            $('.btn_apply_coupon').parent().remove();
+                            toastr.success(data2.message);
+                        } else {
+                            toastr.error(data2.message);
+                        }
+                    },
+                    error: (e) => {
+                        toastr.error(e);
+                    }
+                });
+
+                // if (coupon_value == '5500') {
+                //     $('#order-place').append('<input hidden name="no_shipping" value="true">');
+                //     mutate_front_total(parseFloat($('#totalshippingh4').html().replace('$', '')) * -1);
+                //     $('#totalshippingh4').html('$ 0');
+                //     toastr.success('No Shipping coupon applied!');
+                //     $('.btn_apply_coupon').parent().remove();
+                // } else if (coupon_value == '5050') {
+                //     $('#order-place').append('<input hidden name="no_tax" value="true">');
+                //     mutate_front_total(parseFloat($('#li_subtotal').find('h4').html().replaceAll('$', '')) * (parseFloat($('#taxli').find('h4').html().replaceAll('$', '')) / 100) * -1);
+                //     $('#taxli').find('h4').html('0%');
+                //     toastr.success('No Tax coupon applied!');
+                //     $('.btn_apply_coupon').parent().remove();
+                // } else if (coupon_value == '1010') {
+                //     $('#order-place').append('<input hidden name="ten_off" value="true">');
+                //     mutate_front_total(parseFloat($('#li_subtotal').find('h4').html().replaceAll('$', '')) * 0.1 * -1);
+                //     // $('#taxli').find('h4').html('0%');
+                //     toastr.success('10% off coupon applied!');
+                //     $('.btn_apply_coupon').parent().remove();
+                // } else if (coupon_value == '2020') {
+                //     $('#order-place').append('<input hidden name="twenty_off" value="true">');
+                //     mutate_front_total(parseFloat($('#li_subtotal').find('h4').html().replaceAll('$', '')) * 0.1 * -1);
+                //     // $('#taxli').find('h4').html('0%');
+                //     toastr.success('20% off coupon applied!');
+                //     $('.btn_apply_coupon').parent().remove();
+                // } else if (coupon_value == 'REP01') {
+                //     $('#order-place').append('<input hidden name="sales_rep_01" value="true">');
+                //     toastr.success('Sales rep coupon applied!');
+                //     $('.btn_apply_coupon').parent().remove();
+                // } else if (coupon_value == 'REP02') {
+                //     $('#order-place').append('<input hidden name="sales_rep_02" value="true">');
+                //     toastr.success('Sales rep coupon applied!');
+                //     $('.btn_apply_coupon').parent().remove();
+                // } else if (coupon_value == 'REP03') {
+                //     $('#order-place').append('<input hidden name="sales_rep_03" value="true">');
+                //     toastr.success('Sales rep coupon applied!');
+                //     $('.btn_apply_coupon').parent().remove();
+                // } else {
+                //     toastr.error('Invalid coupon.');
+                //     $('.text_coupon').val('');
+                // }
             });
     </script>
     @endsection

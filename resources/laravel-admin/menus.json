@@ -1,1 +1,19 @@
-{"menus":[{"section":"Modules","items":[{"title":"StatesTax","icon":"<i class='la la-dollar'></i>","url":"\/statetax\/states-tax"}]}]}
+{
+  "menus": [
+    {
+      "section": "Modules",
+      "items": [
+        {
+          "title": "StatesTax",
+          "icon": "<i class='la la-dollar'><\/i>",
+          "url": "\/statetax\/states-tax"
+        },
+        {
+          "title": "Coupons",
+          "icon": "<i class='fas fa-ticket-alt mr-1'><\/i>",
+          "url": "\/admin\/coupon"
+        }
+      ]
+    }
+  ]
+}
