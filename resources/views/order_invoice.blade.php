@@ -32,6 +32,7 @@
             <h1 style="color: #0087C3;font-size: 2.4em;line-height: 1em;font-weight: normal;margin: 0  0 10px 0;">INVOICE {{$invoice}}</h1>
             <div class="date" style="font-size: 1.1em;color: #777777;">Date of Invoice: {{ \Carbon\Carbon::now()->format('d F Y') }}</div>
             <div class="date" style="font-size: 1.1em;color: #777777;">Transaction#: {{$transaction}}</div>
+            <div class="date" style="font-size: 1.1em;color: #777777;">Tracking#: {{$tracking}}</div>
             <div class="date" style="font-size: 1.1em;color: #777777;">Shipping Via: {{$shipping}}</div>
             <div class="date" style="font-size: 1.1em;color: #777777;width:60%;float:right;">Shipping Notes: Your order has been shipped. Now your order is making its way to your destination</div>
           </td>

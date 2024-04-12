@@ -1432,6 +1432,7 @@ class OrderController extends Controller
                                   'email' => $request->email,
                                   'message' => $request->message,
                                   'invoice' => $invoice,
+                                  'tracking' => $order->track_id,
                                   'transaction' => $tresponse->getTransId(),
                                   'shipping' => $request->input('shipping'),
                                   'ship_amount' => $request->shippingamount,
