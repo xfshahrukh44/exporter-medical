@@ -54,9 +54,10 @@ class ProductController extends Controller
         if(auth()->user()->permissions()->where('name','=','view-'.$model)->first()!= null) {
             $keyword = $request->get('search');
             if (!empty($keyword)) {
-                $product = Product::where('products.product_title', 'LIKE', "%$keyword%")
-				->leftjoin('categories', 'products.category', '=', 'categories.id')
-                ->orWhere('products.description', 'LIKE', "%$keyword%")->orWhere('products.sku', $keyword)->orWhere('products.item_number', $keyword)
+                $product = Product::select(DB::raw('*'))
+                ->where('products.product_title', 'LIKE', "%$keyword%")
+//				->leftjoin('categories', 'products.category', '=', 'categories.id')
+//                ->orWhere('products.description', 'LIKE', "%$keyword%")->orWhere('products.sku', $keyword)->orWhere('products.item_number', $keyword)
                 ->paginate(25);
             } else {
                 $product = Product::paginate(25);
