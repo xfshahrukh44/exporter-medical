@@ -120,6 +120,37 @@
                                             <div class="pro-details-action-wrap">
                                                 <div class="pro-details-add-to-cart">
                                                     <button type="submit">Add to cart</button>
+                                                    <br />
+                                                    <hr />
+                                                    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=60ad47e8bfb0df0011352a02&product=inline-share-buttons" async="async"></script>
+                                                    <a href="#" class="sharethis-inline-share-buttons">  </a>
+                                                </div>
+                                            </div>
+                                            <div class="pro-details-quality-stock-area">
+                                                <span>Invite a friend</span>
+                                                <div class="pro-details-quality-stock-wrap">
+                                                    <form action="#">
+{{--                                                        @csrf--}}
+                                                        <div style="margin-left: 14px;">
+                                                            <input type="email" id="input_email" class="text" name="email" placeholder="abc@example.com" required>
+                                                        </div>
+                                                        <div style="margin-left: 14px;">
+                                                            <button type="submit" id="btn_invite_friend" class="btn btn-primary">Invite</button>
+                                                        </div>
+                                                        @error('error')
+                                                            <div class="col-12">
+                                                                <p style="background: #ffdede; color: red; padding: 17px; text-align: center;">{{$message}}</p>
+                                                            </div>
+                                                        @enderror
+                                                        @if(session()->has('success'))
+                                                            <div class="col-12">
+                                                                <p style="background: #d2f6a1; color: green; padding: 17px; text-align: center;">{{session()->get('success')}}</p>
+                                                            </div>
+                                                        @endif
+                                                    </form>
+                                                    <!--<div class="pro-details-stock">-->
+                                                <!--    <span><i class="fas fa-check-circle"></i> {{ $product_detail->stock }} in stock</span>-->
+                                                    <!--</div>-->
                                                 </div>
                                             </div>
                                             @endif
@@ -385,13 +416,15 @@
             </div>
           </div>
         </div>
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+            <form id="form_invite_friend" action="{{route('invite-friend')}}" method="POST" hidden>
+                @csrf
+            </form>
     
     
     
@@ -520,6 +553,18 @@
         $(document).on('click', "#addCart", function(e) {
             console.log($('#addcount').val())
             $('#add-cart').submit();
+        });
+
+        $(document).on('ready', function() {
+            $('#btn_invite_friend').on('click', (e) => {
+                e.preventDefault();
+                if ($('#input_email').val() == "") {
+                    return 0;
+                }
+
+                $('#form_invite_friend').append('<input name="email" value="'+$('#input_email').val()+'" required>');
+                $('#form_invite_friend').submit();
+            });
         });
 
     </script>

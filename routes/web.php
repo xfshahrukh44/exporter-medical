@@ -337,6 +337,30 @@ Route::get('verify-coupon/{code}', function ($code) {
     ]);
 })->name('verify-coupon');
 
+//invite-friend
+Route::post('invite-friend', function (\Illuminate\Http\Request $request) {
+    try {
+        $request->validate([
+            'email' => 'required|email'
+        ]);
+
+        Mail::send([], [], function ($message) use ($request) {
+            $message->to($request->email)
+                ->subject('Invitation')
+                ->setBody('<h1>Welcome to exporter medical click <a href="'.route('signin').'">here</a> to join</h1>', 'text/html');
+        });
+
+        Session::flash('message', 'Invitation link has been sent to ' . $request->email);
+        Session::flash('alert-class', 'alert-success');
+
+        return redirect()->back()->with('success', 'Invitation link has been sent to ' . $request->email);
+    } catch (\Exception $e) {
+        Session::flash('alert-class', 'alert-error');
+        Session::flash('message', $e->getMessage());
+        return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+    }
+})->name('invite-friend');
+
 
 Route::get('/ayy',function(){
     //

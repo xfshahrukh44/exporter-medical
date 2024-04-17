@@ -52,33 +52,22 @@
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="input-style mb-20">
-                                                <input name="first_name" placeholder="First Name" type="text" required>
+                                                <input name="fname" placeholder="Name" type="text">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="input-style mb-20">
-                                                <input name="last_name" placeholder="Last Name" type="text" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="input-style mb-20">
-                                                <input name="phone" placeholder="Phone number" type="text" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="input-style mb-20">
-                                                <input name="email" placeholder="Email" type="email" required>
+                                                <input name="email" placeholder="Email" type="email">
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="input-style mb-20">
-                                                <input name="extra_content" placeholder="How can we help you" type="text">
+                                                <input name="extra_content" placeholder="Subject" type="text">
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
-                                            <label for="">Please Enter Your Questions Below*</label>
                                             <div class="textarea-style mb-30">
-                                                <textarea name="notes" placeholder="Your Questions"></textarea>
+                                                <textarea name="notes" placeholder="Your Message"></textarea>
                                             </div>
                                             <button class="submit" type="submit">Send message</button>
                                         </div>

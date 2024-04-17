@@ -135,18 +135,15 @@ class HomeController extends Controller
 
     public function aboutUsSubmit(Request $request)
     {
-        $data = [
-            'fname' => $request->get('first_name'),
-            'lname' => $request->get('last_name'),
-            'phone' => $request->get('phone'),
-            'email' => $request->get('email'),
-            'notes' => $request->get('notes')
-        ];
-
-        Inquiry::create($data);
-        $data['extra_content'] = $request->get('extra_content');
+        Inquiry::create($request->all());
+        $data = array(
+            'name'=>$request->fname,
+            'email'=>$request->email,
+            'subject'=>$request->extra_content,
+            'notes'=>$request->notes
+        );
         
-        Mail::send('about-you', $data, function($message) use ($emails, $subject){
+        Mail::send('mail', $data, function($message) use ($emails, $subject){
             $message->from(env('MAIL_USERNAME'), 'About Us Form');
             $message->to(HelperTrait::returnFlag(218))->subject($subject);
         });
