@@ -120,8 +120,35 @@
                                             <div class="pro-details-action-wrap">
                                                 <div class="pro-details-add-to-cart">
                                                     <button type="submit">Add to cart</button>
+                                                    <button id="btn_request_information" type="button">Request information</button>
                                                     <br />
+                                                    <div id="request_information_wrapper" class="row mt-4" hidden>
+                                                        <form action="" id="form_request_information">
+                                                            <div class="col-6 my-2">
+                                                                <input type="text" name="first_name" id="form_first_name" placeholder="First name" required>
+                                                            </div>
+                                                            <div class="col-6 my-2">
+                                                                <input type="text" name="last_name" id="form_last_name" placeholder="Last name" required>
+                                                            </div>
+                                                            <div class="col-6 my-2">
+                                                                <input type="text" name="phone" id="form_phone" placeholder="Phone number" required>
+                                                            </div>
+                                                            <div class="col-6 my-2">
+                                                                <input type="email" name="email" id="form_email" placeholder="Email address" required>
+                                                            </div>
+                                                            <div class="col-6 my-2">
+                                                                <textarea name="how_can_we_help_you" id="form_how_can_we_help_you" cols="30" rows="10" placeholder="How can we help you?"></textarea>
+                                                            </div>
+                                                            <div class="col-6 my-2">
+                                                                <textarea name="questions" id="form_questions" cols="30" rows="10" placeholder="Please Enter Your Questions Below*" required></textarea>
+                                                            </div>
+                                                            <div class="col-12 text-center">
+                                                                <button class="btn btn-block" id="btn_request_information_2">Request information</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
                                                     <hr />
+                                                    <label for="">Share</label>
                                                     <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=60ad47e8bfb0df0011352a02&product=inline-share-buttons" async="async"></script>
                                                     <a href="#" class="sharethis-inline-share-buttons">  </a>
                                                 </div>
@@ -564,6 +591,40 @@
 
                 $('#form_invite_friend').append('<input name="email" value="'+$('#input_email').val()+'" required>');
                 $('#form_invite_friend').submit();
+            });
+
+            $('#btn_request_information').on('click', function () {
+                $('#request_information_wrapper').prop('hidden', !($('#request_information_wrapper').prop('hidden')));
+            });
+
+            $('#btn_request_information_2').on('click', function (e) {
+                e.preventDefault();
+
+                let data = $('#form_request_information').serialize();
+                alert(data);
+                console.log(data);
+
+                // if (!form.checkValidity()) {
+                //     return form.reportValidity();
+                // }
+
+                $.ajax({
+                    url: '{{route('request-information')}}',
+                    method: 'POST',
+                    data: {
+                        "_token": '{{csrf_token()}}',
+                        "first_name": $('#form_first_name').val(),
+                        "last_name": $('#form_last_name').val(),
+                        "phone": $('#form_phone').val(),
+                        "email": $('#form_email').val(),
+                        "how_can_we_help_you": $('#form_how_can_we_help_you').val(),
+                        "questions": $('#form_questions').val(),
+                    },
+                    success: (data) => {
+                        alert(data);
+                        console.log(data);
+                    }
+                });
             });
         });
 

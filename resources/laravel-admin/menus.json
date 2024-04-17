@@ -12,6 +12,11 @@
           "title": "Coupons",
           "icon": "<i class='fas fa-ticket-alt mr-1'><\/i>",
           "url": "\/admin\/coupon"
+        },
+        {
+          "title": "Information Requests",
+          "icon": "<i class='fas fa-question-circle mr-1'><\/i>",
+          "url": "\/admin\/requestinformation"
         }
       ]
     }

@@ -361,8 +361,29 @@ Route::post('invite-friend', function (\Illuminate\Http\Request $request) {
     }
 })->name('invite-friend');
 
+//invite-friend
+Route::post('request-information', function (\Illuminate\Http\Request $request) {
+    try {
+        $request_information = \App\Models\Requestinformation::create($request->all());
+
+        return json_encode([
+            'success' => true,
+            'data' => $request_information,
+            'message' => 'Your request has been submitted successfully!'
+        ]);
+
+    } catch (\Exception $e) {
+        return json_encode([
+            'success' => false,
+            'data' => [],
+            'message' => $e->getMessage(),
+        ]);
+    }
+})->name('request-information');
+
 
 Route::get('/ayy',function(){
     //
 });
 Route::resource('admin/coupon', 'Admin\CouponController');
+Route::resource('admin/requestinformation', 'Admin\RequestinformationController');
