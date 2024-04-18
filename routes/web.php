@@ -341,13 +341,14 @@ Route::get('verify-coupon/{code}', function ($code) {
 Route::post('invite-friend', function (\Illuminate\Http\Request $request) {
     try {
         $request->validate([
-            'email' => 'required|email'
+            'email' => 'required|email',
+            'link' => 'required',
         ]);
 
         Mail::send([], [], function ($message) use ($request) {
             $message->to($request->email)
                 ->subject('Invitation')
-                ->setBody('<h1>Welcome to exporter medical click <a href="'.route('signin').'">here</a> to join</h1>', 'text/html');
+                ->setBody('<h1>Welcome to exporter medical click <a href="'.$request->link.'">here</a> to join</h1>', 'text/html');
         });
 
         Session::flash('message', 'Invitation link has been sent to ' . $request->email);

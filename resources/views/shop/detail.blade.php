@@ -119,7 +119,7 @@
                                             @else
                                             <div class="pro-details-action-wrap">
                                                 <div class="pro-details-add-to-cart">
-                                                    <button type="submit">Add to cart</button>
+                                                    <button type="button" id="btn_add_to_cart">Add to cart</button>
                                                     <button id="btn_request_information" type="button">Request information</button>
                                                     <br />
                                                     <div id="request_information_wrapper" class="row mt-4" hidden>
@@ -590,6 +590,7 @@
                 }
 
                 $('#form_invite_friend').append('<input name="email" value="'+$('#input_email').val()+'" required>');
+                $('#form_invite_friend').append('<input name="link" value="{{\Illuminate\Support\Facades\URL::current()}}" required>');
                 $('#form_invite_friend').submit();
             });
 
@@ -625,6 +626,11 @@
                         console.log(data);
                     }
                 });
+            });
+
+            $('#btn_add_to_cart').on('click', function (e) {
+                e.preventDefault();
+                $('#add-cart').submit();
             });
         });
 
