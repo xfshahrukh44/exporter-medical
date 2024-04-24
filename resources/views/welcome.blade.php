@@ -131,6 +131,57 @@
             @endforeach
         </div>
     </div>
+    <div class="custom-container">
+        <div class="section-title-btn-wrap st-btn-wrap-xs-center wow tmFadeInUp mb-35">
+            <div class="section-title-1 section-title-hm2">
+                <h2>CPAP accessories</h2>
+            </div>
+        </div>
+        <div class="row">
+            @foreach ($cpap_products as $product)
+                @if($product->image != '' && @getimagesize($product->image) != false)
+                    <div class="col-xl-3 col-lg-4 col-md-4 col-12 col-sm-6">
+                        <div class="single-product-wrap mb-50 wow tmFadeInUp">
+                            <div class="product-img-action-wrap mb-10">
+                                <div class="product-img product-img-zoom">
+                                    <a href="{{ route('shopDetail', ['id' => $product->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $product->product_title))) ]) }}">
+                                        @if ($product->thumb_image != '' && @getimagesize($product->thumb_image ) != false)
+                                            <img class="default-img" src="{{ asset($product->thumb_image ) }}" alt="">
+                                        @elseif ($product->image != '' && @getimagesize($product->image ) != false)
+                                            <img class="default-img" src="{{ asset($product->image ) }}" alt="">
+                                        @else
+                                            <img class="default-img" src="{{ asset('uploads/products/no_image.jpg') }}" alt="">
+                                        @endif
+                                    </a>
+                                </div>
+                                <div class="product-action-1">
+                                    <a aria-label="Add To Cart" href="{{ route('shopDetail', ['id' => $product->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $product->product_title))) ]) }}">
+                                        <i class="fa fa-shopping-bag"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-content-wrap">
+                                <div class="product-category">
+                                    <a href="{{ route('categoryDetail', ['id' => $product->categorys->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $product->categorys->name)))]) }}">{{ $product->categorys->name }}</a>
+                                </div>
+                                <h2><a href="{{ route('shopDetail', ['id' => $product->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $product->product_title))) ]) }}">{{ $product->product_title }}</a></h2>
+                                <div class="product-price">
+                                    @if((float)$product->list_price < 25.00 || (float)$product->list_price > 999.99)
+                                    <a class="quote" href="tel:{{ App\Http\Traits\HelperTrait::returnFlag(59) }}">
+                                        <p>Call us for Pricing</p>
+                                        <!--<img src="{{ asset('images/phone-icon.png') }}">-->
+                                    </a>
+                                    @else
+                                    <span>${{ $product->list_price }}</span>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            @endforeach
+        </div>
+    </div>
 </div>
 
 @foreach($category as $key => $categorys)
@@ -163,7 +214,8 @@
             @endif
                 <div class="row">
                     @foreach ($categorys->products as $products)
-                    <div class="col-xl-3 col-lg-4 col-md-4 col-12 col-sm-6">
+                        @if(($products->image != '' && @getimagesize($products->image) != false) || (Request::get('name') == $products->product_title || Request::get('name') == $products->sku || Request::get('name') == $products->item_number))
+                            <div class="col-xl-3 col-lg-4 col-md-4 col-12 col-sm-6">
                         <div class="single-product-wrap mb-50 wow tmFadeInUp">
                             <div class="product-img-action-wrap mb-10">
                                 <div class="product-img product-img-zoom">
@@ -190,7 +242,7 @@
                                 <div class="product-price">
                                     @if((float)$products->list_price < 25.00 || (float)$products->list_price > 999.99)
                                     <a class="quote" href="tel:{{ App\Http\Traits\HelperTrait::returnFlag(59) }}">
-                                        <p>Call us for Pricing</p>    
+                                        <p>Call us for Pricing</p>
                                         <!--<img src="{{ asset('images/phone-icon.png') }}">-->
                                     </a>
                                     @else
@@ -200,6 +252,7 @@
                             </div>
                         </div>
                     </div>
+                        @endif
                     @endforeach
                 </div>
             </div>

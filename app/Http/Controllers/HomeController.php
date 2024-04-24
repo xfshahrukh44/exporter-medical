@@ -62,12 +62,13 @@ class HomeController extends Controller
        $page = DB::table('pages')->where('id', 1)->first();
        $banner = DB::table('banners')->get();
        $category = Category::where('is_featured', 1)->get();
-       $product = Product::where('is_featured', 1)->get();
+       $product = Product::where('is_featured', 1)->where('category', '!=', '44')->get();
+       $cpap_products = Product::where('category', '44')->get();
        $section = DB::table('section')->where('page_id',1)->get();
        $bestselling = DB::table('products')->inRandomOrder()->limit(3)->get();
 
 
-       return view('welcome', compact('page','banner','category', 'product', 'section', 'bestselling'));
+       return view('welcome', compact('page','banner','category', 'product', 'cpap_products', 'section', 'bestselling'));
     }
     
     public function test(){
