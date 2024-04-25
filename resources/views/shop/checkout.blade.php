@@ -393,7 +393,7 @@
                                         <div class="select-style col-md-12  mb-35 input-style">
                                             <label>Country *</label>
                                             <input type="text" name="country" id="country" class="billing-address"
-                                                   value="US"> <!-- readonly -->
+                                                   value="US" readonly> <!-- readonly -->
                                             <!--<input type="hidden" name="country" id="country" class="billing-address" value="US">-->
                                             <!--<select class="select-active form-control" name="country" id="country">-->
                                         <!--    @foreach ($country as $item)-->
