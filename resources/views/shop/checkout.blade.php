@@ -790,7 +790,8 @@
                     var state = $('#state').val();
 
                     if (country == '' || address == '' || postal == '' || city == '') {
-                        toastr.error('Please fill all address fields')
+                        // toastr.error('Please fill all address fields')
+                        toastr.error('Please enter a valid address.')
                     } else {
                         // $('#li_hidden').prop('hidden', false);
                         if ($('#country').val() == 'US') {
