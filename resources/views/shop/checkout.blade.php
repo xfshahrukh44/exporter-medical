@@ -881,7 +881,7 @@
                                         $('#taxli  h4').text('15%')
                                         var total = tax + Number(response.message);
                                         $('#servname').text('DHL Express');
-                                        $('#totalshippingh4').text('$' + (response.message.toString() ?? ''));
+                                        $('#totalshippingh4').text(response.message ? ('$' + response.message.toString()) : '');
                                         $("#ordertotalli h4").text('$' + total.toString());
 
                                         $('#shippingamount').val(response.message);
