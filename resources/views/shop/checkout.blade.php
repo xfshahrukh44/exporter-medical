@@ -447,7 +447,10 @@
                                     </div>
 
                                     <div class="col-md-12">
-                                        <span id="error" class="text-danger" style="display: none"></span>
+{{--                                        <span id="error" class="text-danger" style="display: none"></span>--}}
+                                        <span class="text-danger" style="display: none">
+                                            This is not a valid state for the specified shipment
+                                        </span>
                                         <div id="loader" style="display:none">
                                             <img src="{{ asset('images/loader.gif') }}">
                                         </div>
