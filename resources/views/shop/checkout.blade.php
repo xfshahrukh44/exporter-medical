@@ -405,24 +405,24 @@
                                         <div class="billing-info col-md-12 input-style ">
                                             <label>Street Address *</label>
                                             <input class="billing-address" type="text" id="address"
-                                                   name="address_line_1" value="Werrastrasse 13" required>
+                                                   name="address_line_1" value="" required>
                                             <!-- readonly -->
                                         </div>
 
                                         <div class="billing-info col-md-12 input-style">
                                             <label>City *</label>
                                             <input class="billing-address" type="text" id="city" name="city"
-                                                   value="Bad Sooden-Allendorf" required>  <!-- readonly -->
+                                                   value="" required>  <!-- readonly -->
                                         </div>
                                         <div class="billing-info col-md-12 input-style">
                                             <label>Postal Code *</label>
                                             <input class="billing-address" type="text" id="postal" name="postal_code"
-                                                   value="37242" required>  <!-- readonly -->
+                                                   value="" required>  <!-- readonly -->
                                         </div>
                                         <div class="billing-info col-md-12 input-style">
                                             <label>State Code *</label>
                                             <input class="billing-address" type="text" id="state" name="state"
-                                                   value="HE" required>  <!-- readonly -->
+                                                   value="" required>  <!-- readonly -->
                                         </div>
 
                                     </div>
@@ -910,6 +910,7 @@
                         $('#error').text('Please Fill out the Address');
                         $('#error').show();
                     } else {
+                        alert();
                         $('#accordion').slideUp();
                         $('.shippingbtn').removeClass('active');
                         $(this).addClass("active");
@@ -969,7 +970,7 @@
                                 } else {
                                     $('#loader').hide();
                                     if (response.err)
-                                    $('#error').text(response.error.includes('is not a valid state for the specified shipment') ? 'This is not a valid state for the specified shipment' : response.error);
+                                    $('#error').text(response.error);
                                     $('#error').show();
                                 }
 
