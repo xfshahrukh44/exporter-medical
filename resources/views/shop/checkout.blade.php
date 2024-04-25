@@ -447,10 +447,10 @@
                                     </div>
 
                                     <div class="col-md-12">
-{{--                                        <span id="error" class="text-danger" style="display: none"></span>--}}
-                                        <span class="text-danger" style="display: none">
-                                            This is not a valid state for the specified shipment
-                                        </span>
+                                        <span id="error" class="text-danger" style="display: none"></span>
+{{--                                        <span class="text-danger" style="display: none">--}}
+{{--                                            This is not a valid state for the specified shipment--}}
+{{--                                        </span>--}}
                                         <div id="loader" style="display:none">
                                             <img src="{{ asset('images/loader.gif') }}">
                                         </div>
@@ -881,7 +881,7 @@
                                         $('#taxli  h4').text('15%')
                                         var total = tax + Number(response.message);
                                         $('#servname').text('DHL Express');
-                                        $('#totalshippingh4').text('$' + response.message.toString());
+                                        $('#totalshippingh4').text('$' + (response.message.toString() ?? ''));
                                         $("#ordertotalli h4").text('$' + total.toString());
 
                                         $('#shippingamount').val(response.message);
