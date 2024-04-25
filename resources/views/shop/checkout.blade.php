@@ -968,7 +968,8 @@
                                     $('#accordion').slideDown();
                                 } else {
                                     $('#loader').hide();
-                                    $('#error').text(response.error);
+                                    if (response.err)
+                                    $('#error').text(response.error.includes('is not a valid state for the specified shipment') ? 'This is not a valid state for the specified shipment' : response.error);
                                     $('#error').show();
                                 }
 
