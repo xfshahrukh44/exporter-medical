@@ -1,4 +1,14 @@
 @extends('layouts.main')
+
+@section('css')
+    <style>
+        .product-img-zoom img {
+            height: 200px; /* Adjust this value as needed */
+            width: auto; /* Maintain aspect ratio */
+        }
+    </style>
+@endsection
+
 @section('content')
 <?php
     use App\wishlists;
