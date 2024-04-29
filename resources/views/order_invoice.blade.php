@@ -128,7 +128,8 @@
             </td>
             <td style="padding: 10px 20px;background: #FFFFFF;text-align: right;border-bottom: none;font-size: 1.2em;white-space: nowrap;border-top: 1px solid #AAAAAA;">
 {{--                ${{ $amount - $shipping_amount - $subtotal }}</td>--}}
-                ${{ $tax_amount }}</td>
+{{--                ${{ $tax_amount }}</td>--}}
+                ${{ number_format($tax_amount, 2) }}</td>
         </tr>
         <tr>
             <td colspan="1"
