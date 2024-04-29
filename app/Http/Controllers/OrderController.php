@@ -936,8 +936,9 @@ class OrderController extends Controller
 
         }
         $shippArray = array (
-              'plannedShippingDateAndTime' => Carbon::tomorrow()->format('Y-m-d\TH:i:s').' GMT+04:00',
-              'pickup' => 
+//              'plannedShippingDateAndTime' => Carbon::tomorrow()->format('Y-m-d\TH:i:s').' GMT+04:00',
+              'plannedShippingDateAndTime' => Carbon::tomorrow()->format('Y-m-d\TH:i:s'),
+              'pickup' =>
               array (
                 'isRequested' => false,
               ),
@@ -1071,7 +1072,8 @@ class OrderController extends Controller
     public function upsshipping($request)
     {
         if( $request['country'] == "US"){
-            $service = "12";
+//            $service = "12";
+            $service = "11";
 
         }
         else{
@@ -1131,7 +1133,8 @@ class OrderController extends Controller
                         "MonetaryValue"=> (string) $request['amount']
                     ],
                     "ItemizedChargesRequestedIndicator" => "",
-                    "Service" => ["Code" => "12"],
+//                    "Service" => ["Code" => "12"],
+                    "Service" => ["Code" => "11"],
                     "Package" => [
                         "SimpleRate" => ["Code" => "S"],
                         "Packaging" => ["Code" => "02"],
