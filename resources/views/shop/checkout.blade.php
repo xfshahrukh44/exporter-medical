@@ -633,7 +633,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12 text-center">
-                                                    <button type="button" onclick="Auth()" class="mt-40" id="authbtn">
+{{--                                                    <button type="button" onclick="Auth()" class="mt-40" id="authbtn">--}}
+                                                    <button type="button" class="mt-40" id="authbtn">
                                                         Pay
                                                         Now
 {{--                                                        ${{ $subtotal }}--}}
@@ -738,6 +739,18 @@
         <link rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+            <script>
+                let pay_now_clicked = false;
+                $('#authbtn').on('click', function (e) {
+                    if (pay_now_clicked == false) {
+                        pay_now_clicked = true;
+                        Auth();
+                    } else {
+                        e.preventDefault();
+                        $(this).prop('disabled', true);
+                    }
+                });
+            </script>
         <script>
             var input = document.querySelector("#phone"),
                 errorMsg = document.querySelector("#errormsg"),
