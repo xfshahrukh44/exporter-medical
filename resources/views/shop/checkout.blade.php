@@ -9,6 +9,16 @@
           integrity="sha512-wJgJNTBBkLit7ymC6vvzM1EcSWeM9mmOu+1USHaRBbHkm6W9EgM0HY27+UtUaprntaYQJF75rc8gjxllKs5OIQ=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <style>
+        .input-style select {
+            background-color: #f8f8f8;
+            border: 1px solid #f8f8f8;
+            height: 48px;
+            color: #666;
+            padding: 3px 20px;
+            border-radius: 26px;
+            font-size: 15px;
+        }
+
         /*Remove CSS when fedex enable*/
         button#upsbutton {
             padding: 0;
@@ -424,6 +434,41 @@
                                             <input class="billing-address" type="text" id="state" name="state"
                                                    value="" required>  <!-- readonly -->
                                         </div>
+                                        <div class="billing-info col-md-12 input-style">
+                                            <label>Shipping method</label>
+                                            <select name="shipping_method" id="shipping_method" class="billing-address">
+                                                <option value="01">Next Day Air</option>
+                                                <option value="02">2nd Day Air</option>
+                                                <option value="03">Ground</option>
+                                                <option value="07">Express</option>
+                                                <option value="08">Expedited</option>
+                                                <option value="11" selected>UPS Standard</option>
+                                                <option value="12">3 Day Select</option>
+                                                <option value="13">Next Day Air Saver</option>
+                                                <option value="14">UPS Next Day Air® Early</option>
+                                                <option value="17">UPS Worldwide Economy DDU</option>
+                                                <option value="54">Express Plus</option>
+                                                <option value="59">2nd Day Air A.M.</option>
+                                                <option value="65">UPS Saver</option>
+                                                <option value="M2">First Class Mail</option>
+                                                <option value="M3">Priority Mail</option>
+                                                <option value="M4">Expedited MaiI Innovations</option>
+                                                <option value="M5">Priority Mail Innovations</option>
+                                                <option value="M6">Economy Mail Innovations</option>
+                                                <option value="M7">MaiI Innovations (MI) Returns</option>
+                                                <option value="70">UPS Access Point™ Economy</option>
+                                                <option value="71">UPS Worldwide Express Freight Midday</option>
+                                                <option value="72">UPS Worldwide Economy DDP</option>
+                                                <option value="74">UPS Express®12:00</option>
+                                                <option value="75">UPS Heavy Goods</option>
+                                                <option value="82">UPS Today Standard</option>
+                                                <option value="83">UPS Today Dedicated Courier</option>
+                                                <option value="84">UPS Today Intercity</option>
+                                                <option value="85">UPS Today Express</option>
+                                                <option value="86">UPS Today Express Saver</option>
+                                                <option value="96">UPS Worldwide Express Freight.</option>
+                                            </select>
+                                        </div>
 
                                     </div>
 
@@ -804,6 +849,7 @@
 
                     var city = $('#city').val();
                     var state = $('#state').val();
+                    var shipping_method = $('#shipping_method').val();
 
                     if (country == '' || address == '' || postal == '' || city == '') {
                         // toastr.error('Please fill all address fields')
@@ -828,6 +874,7 @@
                                     state: state,
                                     postal: postal,
                                     city: city,
+                                    shipping_method: shipping_method,
 
                                 },
                                 success: function (response) {
@@ -858,6 +905,9 @@
                                         $('#authbtn').text('Pay Now');
                                         $('#shippinginput').val("UPS");
                                         $('#accordion').slideDown();
+
+                                        $('#error').text('');
+                                        $('#error').hide();
 
                                     } else {
                                         $('#error').text(response.message);

@@ -574,7 +574,7 @@ class OrderController extends Controller
     }
 
     public function upsservices(Request $request){
-        
+
        
         $tax = 10.25;
         if($request->input('country') == 'US')
@@ -635,7 +635,7 @@ class OrderController extends Controller
 
         }
         if($request->input('country') == 'US'){
-            $service = "12";
+            $service = $request->get('shipping_method') ?? '11';
         }
         else{
             $service = "65";
