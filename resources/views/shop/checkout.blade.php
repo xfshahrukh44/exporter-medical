@@ -435,7 +435,7 @@
                                                    value="" required>  <!-- readonly -->
                                         </div>
                                         <div class="billing-info col-md-12 input-style">
-                                            <label>Shipping method</label>
+                                            <label>Shipping services</label>
                                             <select name="shipping_method" id="shipping_method" class="billing-address">
                                                 <option value="01">Next Day Air</option>
                                                 <option value="02">2nd Day Air</option>
