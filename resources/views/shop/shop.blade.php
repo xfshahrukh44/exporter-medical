@@ -115,7 +115,7 @@
                         @foreach ($shops as $products)
                             {{--eliminate products without images unless searched by SKU or Item number or Title--}}
                             @if(($products->image != '' && @getimagesize($products->image) != false) || (Request::get('name') == $products->product_title || Request::get('name') == $products->sku || Request::get('name') == $products->item_number))
-                                <div class="col-xl-3 col-lg-4 col-md-4 col-12 col-sm-6 wow tmFadeInUp">
+                                <div class="col-xl-3 col-lg-4 col-md-4 col-6 col-sm-6 wow tmFadeInUp">
                                     <div class="single-product-wrap mb-50 wow tmFadeInUp">
                                         <div class="product-img-action-wrap mb-10">
                                             <div class="product-img product-img-zoom">

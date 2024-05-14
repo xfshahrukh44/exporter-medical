@@ -38,6 +38,15 @@ $('.slider3').owlCarousel({
 
 
 
+$(document).ready(function(){
+    
+    $("#mobrespon").on('toggle', function(){
+        $("#mobshow").show();
+    });
+
+  
+});
+
 
 $('.playbutton').click(function(){
 $('video')[0].paused?$('video')[0].play():$('video')[0].pause();

@@ -25,12 +25,12 @@
         <div class="single-hero-slider single-animation-wrap slider-height-2 custom-d-flex custom-align-item-center bg-img" style="background-image:url({{ asset($banners->image) }});">
             <div class="custom-container">
                 <div class="row align-items-center slider-animated-1">
-                    <div class="col-lg-6 col-md-6 col-12 col-sm-6">
+                    <div class="col-lg-6 col-md-6 col-6 col-sm-6">
                         <div class="hero-slider-content-2">
                             
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-12 col-sm-6">
+                    <div class="col-lg-6 col-md-6 col-6 col-sm-6">
                         <div class="single-slider-img single-slider-img-1">
                             
                         </div>
@@ -99,7 +99,7 @@
         <div class="row">
             @foreach ($product as $products)
                 @if($products->image != '' && @getimagesize($products->image) != false)
-                    <div class="col-xl-3 col-lg-4 col-md-4 col-12 col-sm-6">
+                    <div class="col-xl-3 col-lg-4 col-md-4 col-6 col-sm-6">
                         <div class="single-product-wrap mb-50 wow tmFadeInUp">
                             <div class="product-img-action-wrap mb-10">
                                 <div class="product-img product-img-zoom">
@@ -150,7 +150,7 @@
 {{--        <div class="row">--}}
 {{--            @foreach ($cpap_products as $product)--}}
 {{--                @if($product->image != '' && @getimagesize($product->image) != false)--}}
-{{--                    <div class="col-xl-3 col-lg-4 col-md-4 col-12 col-sm-6">--}}
+{{--                    <div class="col-xl-3 col-lg-4 col-md-4 col-6 col-sm-6">--}}
 {{--                        <div class="single-product-wrap mb-50 wow tmFadeInUp">--}}
 {{--                            <div class="product-img-action-wrap mb-10">--}}
 {{--                                <div class="product-img product-img-zoom">--}}
@@ -204,11 +204,35 @@
             <div class="btn-style-2 mrg-top-xs">
                 <a href="{{ route('categoryDetail', ['id' => $categorys->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $categorys->name)))]) }}">View all products <i class="fa fa-long-arrow-right"></i></a>
             </div>
+            
+            <div class="openshow">
+                
+                <a class="categori-button-active" href="#">
+                    <span class="fa fa-bars"></span> Browse Categories <i class="down fa fa-chevron-down"></i> 
+                </a>
+                <div class="categori-dropdown-wrap categori-dropdown-active-large">
+                   
+                   <div class="col-lg-3" id="mobshow">
+                        <div class="slidebar-product-wrap slidebar-product-bg-{{$key+1}} wow tmFadeInUp mobshow">
+                            <div class="slidebar-product-details">
+                                <ul>
+                                    @foreach($categorys->subcategory as $subcategory)
+                                    <li><a href="{{ route('subcategory', ['id' => $subcategory->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $subcategory->name)))]) }}"><i class="fa fa-long-arrow-alt-right"></i> {{ $subcategory->name }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+                
+            </div>
+            
         </div>
-        <div class="row">
+        <div class="row" >
             @if(count($categorys->subcategory) != 0)
-            <div class="col-lg-3">
-                <div class="slidebar-product-wrap slidebar-product-bg-{{$key+1}} wow tmFadeInUp">
+            <div class="col-lg-3 nonediv" id="mobshow">
+                <div class="slidebar-product-wrap slidebar-product-bg-{{$key+1}} wow tmFadeInUp mobshow">
                     <div class="slidebar-product-details">
                         <ul>
                             @foreach($categorys->subcategory as $subcategory)
@@ -225,7 +249,7 @@
                 <div class="row">
                     @foreach ($categorys->products as $products)
                         @if(($products->image != '' && @getimagesize($products->image) != false) || (Request::get('name') == $products->product_title || Request::get('name') == $products->sku || Request::get('name') == $products->item_number))
-                            <div class="col-xl-3 col-lg-4 col-md-4 col-12 col-sm-6">
+                            <div class="col-xl-3 col-lg-4 col-md-4 col-6 col-sm-6">
                         <div class="single-product-wrap mb-50 wow tmFadeInUp">
                             <div class="product-img-action-wrap mb-10">
                                 <div class="product-img product-img-zoom">
@@ -291,25 +315,25 @@
 <div class="contact-area bg-gray-2">
     <div class="custom-container">
         <div class="row">
-            <div class="col-xl-3 col-lg-6 col-md-6 col-12 col-sm-6">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-6 col-sm-6">
                 <div class="single-contact-wrap text-center wow tmFadeInUp">
                     <h4>Address</h4>
                     <p>{!! App\Http\Traits\HelperTrait::returnFlag(519) !!}</p>
                 </div>
             </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-12 col-sm-6">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-6 col-sm-6">
                 <div class="single-contact-wrap text-center wow tmFadeInUp">
                     <h4>Work inquiries</h4>
                     <p>{{ App\Http\Traits\HelperTrait::returnFlag(218) }}</p>
                 </div>
             </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-12 col-sm-6">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-6 col-sm-6">
                 <div class="single-contact-wrap text-center wow tmFadeInUp">
                     <h4>Call us</h4>
                     <p>{{ App\Http\Traits\HelperTrait::returnFlag(59) }}</p>
                 </div>
             </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-12 col-sm-6">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-6 col-sm-6">
                 <div class="single-contact-wrap text-center wow tmFadeInUp">
                     <h4>Open hours</h4>
                     <p>{{ App\Http\Traits\HelperTrait::returnFlag(1972) }}</p>
@@ -340,6 +364,8 @@
 
 @section('js')
     <script type="text/javascript">
+       
+
         
         @if(Session::has('error'))
             toastr.options =

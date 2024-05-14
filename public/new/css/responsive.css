@@ -710,8 +710,8 @@ div#slick-slide01 {
     padding-right: 10px;
 }
 .single-product-wrap .product-img-action-wrap .product-img a img {
-    height: 160px;
-    max-width: 220px;
+    height: 200px;
+    max-width: 100%;
 }
 .shop-bottom-area {
     overflow-x: hidden;
@@ -802,5 +802,76 @@ div#slick-slide01 {
     position: static;
     width: 100%;
 }
+
+
+.slidebar-product-wrap .slidebar-product-details {
+    justify-content: start;
+}
+
+.btn-style-2 a {
+    display: block !important;
+}
+
+.btn-style-2.mrg-top-xs {
+    display: block;
+}
+
+.section-title-1.section-title-hm2 h2 {
+    text-align: start;
+}
+
+.section-title-btn-wrap.st-btn-wrap-xs-center {
+    display: block;
+}
+
+.single-contact-wrap.text-center.wow.tmFadeInUp p {
+    font-size: 12px !important;
+}
+
+.single-contact-wrap {
+    padding: 35px 12px 40px;
+}
+.product-content-wrap {
+    text-align: center;
+}
+
+.pro-details-quality-stock-wrap form {
+    display: flex;
+    align-items: center;
+}
+.mtmain {
+    margin:0 !important;
+}
+
+.product-details-content .pro-details-quality-stock-area {
+    display: block;
+}
+
+.mtmain input {
+    width: 280px;
+}
+
+.continure-btn a, .common-btn-style a {
+    padding: 10px 20px;
+}
+
+.cart-shiping-update-wrapper .update-btn a, .update-btn button {
+    padding: 10px 20px;
+}
+
+.cart-shiping-update-wrapper {
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+
+.openshow{
+    display:block !important;
+}
+.nonediv{
+    display:none;
+}
+
 
 }

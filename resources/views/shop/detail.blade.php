@@ -158,7 +158,7 @@
                                                 <div class="pro-details-quality-stock-wrap">
                                                     <form action="#">
 {{--                                                        @csrf--}}
-                                                        <div style="margin-left: 14px;">
+                                                        <div class="mtmain" style="margin-left: 14px;">
                                                             <input type="email" id="input_email" class="text" name="email" placeholder="abc@example.com" required>
                                                         </div>
                                                         <div style="margin-left: 14px;">
@@ -207,9 +207,10 @@
                             <div class="product-details-description">
                                 <div class="entry-product-section-heading">
                                     <h2>Description</h2>
+                                    <span class="descc">{!! str_replace('src="/static', 'src="http://www.choiceonemedical.com/static', $product_detail->description) !!}</span>
                                 </div>
-{{--                                {!! $product_detail->description !!}--}}
-                                {!! str_replace('src="/static', 'src="http://www.choiceonemedical.com/static', $product_detail->description) !!}
+                                {{--{!! $product_detail->description !!}--}}
+                                
                             </div>
                         </div>
                     </div>

@@ -142,7 +142,7 @@ ul.pagination li {
     display: none !important;
 }
 .single-contact-wrap.text-center.wow.tmFadeInUp p {
-    font-size: 16px !important;
+    font-size: 16px;
 }
 body{
     top:0px !important;
@@ -199,4 +199,35 @@ ul.mobile-menu select {
 }
 .product-action-1{
 display:none !important;
+}
+
+.openshow {
+    position: relative;
+    Z-INDEX: 0;
+    height: 100%;
+    margin-top: 12px;
+    display:none;
+}
+
+
+
+.openshow .categori-dropdown-wrap.categori-dropdown-active-large {
+    position: unset;
+    transition: all ease 0.5s;
+}
+
+.openshow .categori-dropdown-active-large.open {
+    height: unset;
+}
+
+.openshow .categori-dropdown-active-large {
+    height: 0;
+}
+
+.openshow a {
+    font-size: 20px;
+    color: black !important;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }

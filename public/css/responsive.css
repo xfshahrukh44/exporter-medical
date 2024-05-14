@@ -773,5 +773,31 @@ div#slick-slide01 {
   position: static;
   width: 100%;
 }
+.slidebar-product-wrap .slidebar-product-details {
+    justify-content: start;
+}
+
+.btn-style-2 a {
+    display: block !important;
+}
+
+.btn-style-2.mrg-top-xs {
+    display: block;
+}
+
+.section-title-1.section-title-hm2 h2 {
+    text-align: start;
+}
+
+.section-title-btn-wrap.st-btn-wrap-xs-center {
+    display: block;
+}
+}
+
+@media (max-width: 380px) {
+
+
+
+
 
 }
