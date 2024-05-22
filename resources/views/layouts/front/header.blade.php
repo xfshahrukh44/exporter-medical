@@ -139,10 +139,11 @@
                         <a class="categori-button-active" href="#">
                         <span class="fa fa-bars"></span> Browse Categories <i class="down fa fa-chevron-down"></i> <i class="up fa fa-chevron-up"></i>
                         </a>
-                        <div class="categori-dropdown-wrap categori-dropdown-active-large">
+                        <div class="categori-dropdown-wrap categori-dropdown-active-large" style="overflow-y: auto; max-height: 983px;">
                             <ul>
                                 @php
-                                $cats = DB::table('categories')->take(14)->get();
+                                $cats_old = DB::table('categories')->take(14)->get();
+                                $cats = DB::table('categories')->orderBy('name', 'ASC')->get();
                                 @endphp
                                 @foreach($cats as $cat)
                                 <li><a href="{{ route('categoryDetail', ['id' => $cat->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $cat->name)))]) }}"><i class="fa fa-bars"></i> {{ $cat->name }}</a></li>
