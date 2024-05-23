@@ -34,7 +34,7 @@ class Category extends Model
     
     public function products()
     {
-        return $this->hasMany('App\Product', 'category', 'id')->orderByRaw('RAND()')->take(8);
+        return $this->hasMany('App\Product', 'category', 'id')->orderByRaw('RAND()')->take(40);
     }
     
     

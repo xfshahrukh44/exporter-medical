@@ -922,46 +922,103 @@
                                 }
                             });
                             $.ajax({
-                                _token: "{{ csrf_token()}}",
-                                url: "{{route('dhlservices')}}",
+                                _token: "{{ csrf_token() }}",
+                                url: "{{ route('upsservices') }}",
                                 type: "post",
+                                dataType: "json",
                                 data: {
                                     country: country,
                                     address: address,
                                     state: state,
                                     postal: postal,
-                                    city: city
+                                    city: city,
+                                    shipping_method: shipping_method,
+
                                 },
-                                dataType: "json",
                                 success: function (response) {
-                                    $('#li_hidden').prop('hidden', false);
-
                                     if (response.status) {
-                                        console.log(response)
+                                        $('#li_hidden').prop('hidden', false);
+                                        console.clear();
+                                        console.log(response);
+                                        var tax = Number('{{ $subtotal }}') + ((Number(response.tax) / 100) * Number('{{ $subtotal }}'));
+                                        $("#ordertotalli h4").text('$' + tax.toString());
+                                        var ordertotal = Number(response.upsamount) + Number(tax);
+                                        // $('#taxli  h4').text(response.tax.toString() + "%")
+                                        $('#taxli  h4').text('$' + ((response.tax / 100) * parseFloat('{{$subtotal}}')).toFixed(2).toString())
+                                        if (response.description != null) {
+                                            $('#desctax h4').text(response.description);
+                                            $('#desctax').slideDown();
+                                        }
 
-                                        var tax = Number('{{ $subtotal }}') + ((Number(15) / 100) * Number('{{ $subtotal }}'));
-                                        console.log(tax)
-                                        $('#taxli  h4').text('15%')
-                                        var total = tax + Number(response.message);
-                                        $('#servname').text('DHL Express');
-                                        $('#totalshippingh4').text(response.message ? ('$' + response.message.toString()) : '');
-                                        $("#ordertotalli h4").text('$' + total.toString());
-
-                                        $('#shippingamount').val(response.message);
-                                        $('#shippinginput').val("DHL");
-                                        $('#grandtotal').text('$ ' + total.toFixed(2));
-                                        // $('#authbtn').text('Pay Now $' + total.toFixed(2));
-                                        $('#authbtn').text('Pay Now');
-                                        $('#amount').val(Number(total.toFixed(2)));
-                                        $('#accordion').slideDown();
-                                        $('#upsli').slideDown();
-                                        $('#shippingdiv').slideDown();
                                         $('#taxli').slideDown();
+                                        $('#shippingamount').val(response.upsamount);
+                                        $('#servname').text('UPS Standard');
+                                        $('#totalshippingh4').text('$' + response.upsamount.toString());
+                                        $('#shippingdiv').slideDown();
+                                        $('#fedexli').hide();
+                                        $('#upsli').slideDown();
+                                        $('#grandtotal').text('$ ' + ordertotal.toFixed(2));
+                                        $('#amount').val(Number(ordertotal.toFixed(2)));
+                                        // $('#authbtn').text('Pay Now $' + ordertotal.toFixed(2));
+                                        $('#authbtn').text('Pay Now');
+                                        $('#shippinginput').val("UPS");
+                                        $('#accordion').slideDown();
 
+                                        $('#error').text('');
+                                        $('#error').hide();
 
+                                    } else {
+                                        $('#error').text(response.message);
+                                        $('#error').show();
                                     }
                                 }
-                            })
+                            });
+                            {{--$.ajaxSetup({--}}
+                            {{--    headers: {--}}
+                            {{--        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
+                            {{--    }--}}
+                            {{--});--}}
+                            {{--$.ajax({--}}
+                            {{--    _token: "{{ csrf_token()}}",--}}
+                            {{--    url: "{{route('dhlservices')}}",--}}
+                            {{--    type: "post",--}}
+                            {{--    data: {--}}
+                            {{--        country: country,--}}
+                            {{--        address: address,--}}
+                            {{--        state: state,--}}
+                            {{--        postal: postal,--}}
+                            {{--        city: city--}}
+                            {{--    },--}}
+                            {{--    dataType: "json",--}}
+                            {{--    success: function (response) {--}}
+                            {{--        $('#li_hidden').prop('hidden', false);--}}
+
+                            {{--        if (response.status) {--}}
+                            {{--            console.log(response)--}}
+
+                            {{--            var tax = Number('{{ $subtotal }}') + ((Number(15) / 100) * Number('{{ $subtotal }}'));--}}
+                            {{--            console.log(tax)--}}
+                            {{--            $('#taxli  h4').text('15%')--}}
+                            {{--            var total = tax + Number(response.message);--}}
+                            {{--            $('#servname').text('DHL Express');--}}
+                            {{--            $('#totalshippingh4').text(response.message ? ('$' + response.message.toString()) : '');--}}
+                            {{--            $("#ordertotalli h4").text('$' + total.toString());--}}
+
+                            {{--            $('#shippingamount').val(response.message);--}}
+                            {{--            $('#shippinginput').val("DHL");--}}
+                            {{--            $('#grandtotal').text('$ ' + total.toFixed(2));--}}
+                            {{--            // $('#authbtn').text('Pay Now $' + total.toFixed(2));--}}
+                            {{--            $('#authbtn').text('Pay Now');--}}
+                            {{--            $('#amount').val(Number(total.toFixed(2)));--}}
+                            {{--            $('#accordion').slideDown();--}}
+                            {{--            $('#upsli').slideDown();--}}
+                            {{--            $('#shippingdiv').slideDown();--}}
+                            {{--            $('#taxli').slideDown();--}}
+
+
+                            {{--        }--}}
+                            {{--    }--}}
+                            {{--})--}}
                         }
 
                     }
