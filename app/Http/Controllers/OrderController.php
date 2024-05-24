@@ -638,7 +638,8 @@ class OrderController extends Controller
             $service = $request->get('shipping_method') ?? '11';
         }
         else{
-            $service = "65";
+            // $service = "65";
+            $service = $request->get('shipping_method') ?? '11';
         }
         $arrayVar =  [
                 "RateRequest" => [
@@ -1071,13 +1072,17 @@ class OrderController extends Controller
     
     public function upsshipping($request)
     {
-        if( $request['country'] == "US"){
+        if($request['country'] == "US"){
 //            $service = "12";
-            $service = "11";
+            //   $service = "11";
+            $service = $request->get('shipping_method') ?? '11';
 
         }
         else{
-            $service = "65";
+            
+            // $service = "65";
+            $service = $request->get('shipping_method') ?? '11';
+            
         }
        
         $shipping = [

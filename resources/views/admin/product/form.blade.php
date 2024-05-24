@@ -17,48 +17,56 @@
 
             </div>
         </div>
+        
         <div class="col-md-12">
             <div class="form-group">
                {!! Form::label('product_title', 'Product Title') !!}
                {!! Form::text('product_title', null, ('required' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
             </div>
         </div>
+        
         <div class="col-md-12">
             <div class="form-group">
                 <label for="">List Price ($)</label>
                 <input type="number" class="form-control" value="{{$product->list_price}}" name="list_price" step="0.01" placeholder="10.00">
             </div>
         </div>
+        
         <div class="col-md-12">
             <div class="form-group">
                 <label for="">Standard Price ($)</label>
                 <input type="number" class="form-control" value="{{$product->stand_price}}" name="stand_price" step="0.01" placeholder="10.00">
             </div>
         </div>
+        
         <div class="col-md-12">
             <div class="form-group">
                 <label for="">SKU</label>
                 <input type="text" class="form-control" value="{{$product->sku}}" name="sku">
             </div>
         </div>
+        
         <div class="col-md-12">
             <div class="form-group">
                 <label for="">Item Number</label>
                 <input type="text" class="form-control" value="{{$product->item_number}}" name="item_number">
             </div>
         </div>
+        
         <div class="col-md-12">
             <div class="form-group">
                 <label for="">Weight</label>
                 <input type="number" class="form-control" value="{{$product->weight}}" name="weight" step="0.01" placeholder="10.00">
             </div>
         </div>
+        
         <div class="col-md-12" style="display: none;">
             <div class="form-group">
                 <label for="">Stock</label>
                 <input type="number" class="form-control" value="{{($product->stock) ? $product->stock : 5}}" name="stock">
             </div>
         </div>
+        
         <div class="col-md-12">
             <div class="form-group">
                 <label for="">Vendor</label>
@@ -72,12 +80,14 @@
                 <input type="number" class="form-control" name="length" value="{{$product->length}}" step="0.01" placeholder="10.00">
             </div>
         </div>
+        
         <div class="col-md-12">
             <div class="form-group">
                 <label for="">Width</label>
                 <input type="number" class="form-control" value="{{$product->width}}" name="width">
             </div>
         </div>
+        
         <div class="col-md-12">
             <div class="form-group">
                 <label for="">Height</label>

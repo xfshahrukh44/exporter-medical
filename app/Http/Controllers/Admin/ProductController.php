@@ -18,6 +18,7 @@ use Image;
 use File;
 use DB;
 use Session;
+
 class ProductController extends Controller
 {
 
@@ -47,6 +48,7 @@ class ProductController extends Controller
      * @return \Illuminate\View\View
      */
 
+
     public function index(Request $request)
     {
 
@@ -56,14 +58,15 @@ class ProductController extends Controller
             if (!empty($keyword)) {
                 $product = Product::select(DB::raw('*'))
                 ->where('products.product_title', 'LIKE', "%$keyword%")
+                ->orWhere('products.sku', 'LIKE', "%$keyword%")
 //				->leftjoin('categories', 'products.category', '=', 'categories.id')
 //                ->orWhere('products.description', 'LIKE', "%$keyword%")->orWhere('products.sku', $keyword)->orWhere('products.item_number', $keyword)
-                ->paginate(25);
+                ->paginate(100);
             } else {
-                $product = Product::paginate(25);
+                $product = Product::paginate(100);
             }
 
-            return view('admin.product.index', compact('product'));
+            return view('admin.product.index', compact('product')); 
         }
         return response(view('403'), 403);
 

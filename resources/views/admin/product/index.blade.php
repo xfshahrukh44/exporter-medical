@@ -82,6 +82,7 @@
                                         <th>#</th>
                                         <th>Product Title</th>
                                         <th>Product Price</th>
+                                        <th>Product Sku</th>
                                         <th>Product Category</th>
                                         <th>Product Image</th>
                                         <th>Actions</th>
@@ -91,9 +92,9 @@
                                     @foreach($product as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td class="text-dark weight-600"> {{ \Illuminate\Support\Str::limit($item->product_title, 50, $end='...') }}
-                                        </td>
+                                        <td class="text-dark weight-600"> {{ \Illuminate\Support\Str::limit($item->product_title, 150, $end='...') }} </td>
                                         <td>${{ $item->list_price }}</td>
+                                        <td> {{ $item->sku }}</td>
                                         <td>{{ $item->categorys->name }}</td>
                                         <td><img src="{{asset($item->image)}}" alt="" title="" width="150"></td>
                                         <td>
@@ -116,6 +117,7 @@
                                         <th>#</th>
                                         <th>Product Title</th>
                                         <th>Product Price</th>
+                                        <th>Product Sku</th>
                                         <th>Product Category</th>
                                         <th>Product Image</th>
                                         <th>Actions</th>
