@@ -69,6 +69,12 @@
                     <div class="header-action-right">
                         <div class="header-action-2">
                             <div class="header-action-icon-2">
+                            <div class="btn-style-1 checkout">
+                                <a  class="font-size-14 btn-1-padding-2" href="https://remsleepdiagnosticscenter.com/">
+                                    <i class="fas fa-info-circle"></i>
+                                    More info
+                                </a>
+                            </div>
                             <div class="headerflex">
                                  <a target="_blank" href="https://remsleepdiagnosticscenter.com/">
                                  <img class="thirdparty" src="{{ asset('images/LOGO.png') }}">
@@ -97,7 +103,7 @@
                                         {{count($cart)}}
                                         @endif
                                     </span>
-                                </a> 
+                                </a>
                                  <div class="btn-style-1 checkout">
                                     <a  class="font-size-14 btn-1-padding-2" href="{{route('payonline')}}">Pay Online Here </a>
                                  </div>
