@@ -349,7 +349,7 @@ Route::post('invite-friend', function (\Illuminate\Http\Request $request) {
             $mail_html = '<h1>Welcome to Exporter medical click <a href="'.$request->link.'">here</a> to view product details.</h1><br />';
             $mail_html .= '<img width="200" height="200" src="'.$request->product_image.'">';
             $message->to($request->email)
-                ->subject('Product information')
+                ->subject($request->product_title)
                 ->setBody($mail_html, 'text/html');
         });
 

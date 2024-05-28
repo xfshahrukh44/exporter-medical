@@ -452,6 +452,7 @@
 
             <form id="form_invite_friend" action="{{route('invite-friend')}}" method="POST" hidden>
                 <input type="hidden" name="product_image" value="{{(@getimagesize($product_detail->image) != false) ? asset($product_detail->image) : asset('uploads/products/no_image.jpg')}}">
+                <input type="hidden" name="product_title" value="{{$product_detail->product_title}}">
                 @csrf
             </form>
     
