@@ -346,9 +346,11 @@ Route::post('invite-friend', function (\Illuminate\Http\Request $request) {
         ]);
 
         Mail::send([], [], function ($message) use ($request) {
+            $mail_html = '<h1>Welcome to Exporter medical click <a href="'.$request->link.'">here</a> to view product details.</h1><br />';
+            $mail_html .= '<img width="200" height="200" src="'.$request->product_image.'">';
             $message->to($request->email)
                 ->subject('Product information')
-                ->setBody('<h1>Welcome to Exporter medical click <a href="'.$request->link.'">here</a> to view product details.</h1>', 'text/html');
+                ->setBody($mail_html, 'text/html');
         });
 
         Session::flash('message', 'Invitation link has been sent to ' . $request->email);
