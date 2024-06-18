@@ -79,9 +79,9 @@ class ProductController extends Controller
 	{
         $page = DB::table('pages')->where('id', 4)->first();
 
-		$shops = Product::where('category', $id)->paginate(100);
+		$shops = Product::where('category', $id)->paginate(300);
 
-        $categories =  Category::all();
+        $categories =  Category::orderBy('name', 'asc')->get();
 
 		return view('shop.shop', compact('shops', 'page', 'categories'));
 	}
@@ -96,19 +96,19 @@ class ProductController extends Controller
         {
             if($method == 'latest')
             {
-                $shops = Product::orderBy('created_at', 'desc')->paginate(100);
+                $shops = Product::orderBy('created_at', 'desc')->where('image', '!=' , 'uploads/products/')->paginate(300);
             }
             else if($method == 'low-to-high'){
-                $shops = Product::orderBy('list_price', 'asc')->paginate(100);
+                $shops = Product::orderBy('list_price', 'asc')->where('image', '!=' , 'uploads/products/')->paginate(300);
             }
             else if($method == 'high-to-low'){
-                $shops = Product::orderBy('list_price', 'desc')->paginate(100);
+                $shops = Product::orderBy('list_price', 'desc')->where('image', '!=' , 'uploads/products/')->paginate(300);
             }
             else if($method == 'A-Z'){
-                $shops = Product::orderBy('product_title', 'asc')->paginate(100);
+                $shops = Product::orderBy('product_title', 'asc')->where('image', '!=' , 'uploads/products/')->paginate(300);
             }
             else if($method == 'Z-A'){
-                $shops = Product::orderBy('product_title', 'desc')->paginate(100);
+                $shops = Product::orderBy('product_title', 'desc')->where('image', '!=' , 'uploads/products/')->paginate(300);
             }
         }
         else{
@@ -116,19 +116,19 @@ class ProductController extends Controller
             if($method == 'latest')
             {
 
-                $shops = Product::where($category, $id)->orderBy('created_at', 'desc')->paginate(100);
+                $shops = Product::where($category, $id)->orderBy('created_at', 'desc')->where('image', '!=' , 'uploads/products/')->paginate(300);
             }
             else if($method == 'low-to-high'){
-                $shops = Product::where($category, $id)->orderBy('list_price', 'asc')->paginate(100);
+                $shops = Product::where($category, $id)->orderBy('list_price', 'asc')->where('image', '!=' , 'uploads/products/')->paginate(300);
             }
             else if($method == 'high-to-low'){
-                $shops = Product::where($category, $id)->orderBy('list_price', 'desc')->paginate(100);
+                $shops = Product::where($category, $id)->orderBy('list_price', 'desc')->where('image', '!=' , 'uploads/products/')->paginate(300);
             }
             else if($method == 'A-Z'){
-                $shops = Product::where($category, $id)->orderBy('product_title', 'asc')->paginate(100);
+                $shops = Product::where($category, $id)->orderBy('product_title', 'asc')->where('image', '!=' , 'uploads/products/')->paginate(300);
             }
             else if($method == 'Z-A'){
-                $shops = Product::where($category, $id)->orderBy('product_title', 'desc')->paginate(100);
+                $shops = Product::where($category, $id)->orderBy('product_title', 'desc')->where('image', '!=' , 'uploads/products/')->paginate(300);
             }
         }
 
@@ -144,9 +144,9 @@ class ProductController extends Controller
 	{
         $page = DB::table('pages')->where('id', 4)->first();
 
-		$shops = Product::where('subcategory', $id)->paginate(100);
+		$shops = Product::where('subcategory', $id)->paginate(300);
 
-        $categories =  Category::all();
+        $categories =  Category::orderBy('name', 'asc')->get();
 
 		return view('shop.shop', compact('shops', 'page', 'categories'));
 	}
@@ -308,14 +308,14 @@ class ProductController extends Controller
 //            });
 //        });
 
-	    $shops = $shops->paginate(100);
+	    $shops = $shops->where('image', '!=' , 'uploads/products/')->paginate(300);
 
 
 	   // $shops = Product::paginate(100);
 		$page = DB::table('pages')->where('id', 4)->first();
 		$count = DB::table('products')->count();
 
-		$categories = Category::all();
+		$categories = Category::orderBy('name', 'asc')->get();
 		return view('shop.shop', compact('shops', 'page', 'categories', 'count'));
 	}
 

@@ -106,20 +106,21 @@ class ProductController extends Controller
     {
 
 
-	    //echo "<pre>";
-	    //print_r($_FILES);
-	    //return;
-
-		//dd($_FILES);
-        $model = str_slug('product','-');
-        if(auth()->user()->permissions()->where('name','=','add-'.$model)->first()!= null) {
-            $this->validate($request, [
-			'product_title' => 'required',
-			'description' => 'required',
-			'list_price' => 'required',
-			'image' => 'required',
-			'item_id' => 'required',
-		]);
+    	    //echo "<pre>";
+    	    //print_r($_FILES);
+    	    //return;
+    
+    		//dd($_FILES);
+            $model = str_slug('product','-');
+            if(auth()->user()->permissions()->where('name','=','add-'.$model)->first()!= null) {
+                $this->validate($request, [
+    			'product_title' => 'required',
+    			'description' => 'required',
+    			'list_price' => 'required',
+    			'image' => 'required',
+    			'item_id' => 'required',
+    		]);
+		
 
 		    //echo implode(",",$_POST['language']);
 		    //return;

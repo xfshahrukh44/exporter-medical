@@ -6,6 +6,25 @@
             height: 200px; /* Adjust this value as needed */
             width: auto; /* Maintain aspect ratio */
         }
+        
+        .click_menu i {position: absolute;z-index: 0;right: 0;cursor: pointer;transform: rotate(180deg);transition: all ease 0.5s;}
+
+.active .click_menu i {
+    transform: unset;
+    transition: all ease 0.5s;
+}
+ul.shop_show {
+    display: none;
+}
+.sidebar-categories-list ul li.active > a {
+    font-weight: bold;
+    color: #415da1;
+}
+
+.sidebar-categories-list ul li.active ul.shop_show {
+    display: block;
+}
+
     </style>
 @endsection
 
@@ -32,6 +51,30 @@
             <div class="col-lg-9">
                 <div class="shop-topbar-wrapper">
                     <div class="totall-product">
+                        
+                        <?php
+                            $productCount = 0; // Initialize count
+                            
+                            $shopsss = DB::table('products')->get();
+                            
+                        ?>
+    
+                        @foreach ($shopsss as $products)
+                        
+                            <?php 
+                            
+                                $imagePath = public_path($products->image); 
+                                
+                                if(file_exists($imagePath)) {
+                                    
+                                     $productCount++; // Increment count if file exists
+                                    
+                                }
+                                
+                            ?>
+                        
+                        @endforeach
+                        
                         <p> We found <span>{{ $shops->total() }}</span> products available for you</p>
                     </div>
                     <div class="sort-by-product-area">
@@ -114,43 +157,60 @@
                     <div class="row">
                         @foreach ($shops as $products)
                             {{--eliminate products without images unless searched by SKU or Item number or Title--}}
-                            @if(($products->image != '' && @getimagesize($products->image) != false) || (Request::get('name') == $products->product_title || Request::get('name') == $products->sku || Request::get('name') == $products->item_number))
-                                <div class="col-xl-3 col-lg-4 col-md-4 col-6 col-sm-6 wow tmFadeInUp">
-                                    <div class="single-product-wrap mb-50 wow tmFadeInUp">
-                                        <div class="product-img-action-wrap mb-10">
-                                            <div class="product-img product-img-zoom">
-                                                <a href="{{ route('shopDetail', ['id' => $products->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $products->product_title))) ]) }}">
-                                                    @if (@getimagesize($products->image) != false)
-                                                    <img class="default-img" src="{{ asset($products->image) }}" alt="">
+                            
+                            <?php 
+                            
+                                // $imagePath = public_path($products->image); 
+                                
+                                // if(file_exists($imagePath)) {
+                                
+                            ?>
+                            
+                                @if(($products->image != '' && @getimagesize($products->image) != false) || (Request::get('name') == $products->product_title || Request::get('name') == $products->sku || Request::get('name') == $products->item_number))
+                                    <div class="col-xl-3 col-lg-4 col-md-4 col-6 col-sm-6 wow tmFadeInUp">
+                                        <div class="single-product-wrap mb-50 wow tmFadeInUp">
+                                            <div class="product-img-action-wrap mb-10">
+                                                <div class="product-img product-img-zoom">
+                                                    <a href="{{ route('shopDetail', ['id' => $products->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $products->product_title))) ]) }}">
+                                                        @if (@getimagesize($products->image) != false)
+                                                        <img class="default-img" src="{{ asset($products->image) }}" alt="">
+                                                        @else
+                                                        <img class="default-img" src="{{ asset('uploads/products/no_image.jpg') }}" alt="">
+                                                        @endif
+                                                        <!--<img class="hover-img" src="assets/images/product/product-7-2.jpg" alt="">-->
+                                                    </a>
+                                                </div>
+                                                <div class="product-action-1">
+                                                    <a aria-label="Add To Cart" href="{{ route('shopDetail', ['id' => $products->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $products->product_title))) ]) }}"><i class="far fa-shopping-bag"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="product-content-wrap">
+                                                <div class="product-category">
+                                                    <a href="{{ route('categoryDetail', ['id' => $products->categorys->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $products->categorys->name)))]) }}">{{ $products->categorys->name }}</a>
+                                                </div>
+                                                <h2><a href="{{ route('shopDetail', ['id' => $products->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $products->product_title))) ]) }}">{{ $products->product_title }}</a></h2>
+                                                <div class="product-price">
+                                                    @if((float)$products->list_price < 25.00 || (float)$products->list_price > 999.99)
+                                                    <a class="quote" href="tel:{{ App\Http\Traits\HelperTrait::returnFlag(59) }}">
+                                                        <p>Call us for Pricing</p>
+                                                        <!--<img src="{{ asset('images/phone-icon.png') }}">-->
+                                                    </a>
                                                     @else
-                                                    <img class="default-img" src="{{ asset('uploads/products/no_image.jpg') }}" alt="">
+                                                    <span>${{ $products->list_price }}</span>
                                                     @endif
-                                                    <!--<img class="hover-img" src="assets/images/product/product-7-2.jpg" alt="">-->
-                                                </a>
-                                            </div>
-                                            <div class="product-action-1">
-                                                <a aria-label="Add To Cart" href="{{ route('shopDetail', ['id' => $products->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $products->product_title))) ]) }}"><i class="far fa-shopping-bag"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="product-content-wrap">
-                                            <div class="product-category">
-                                                <a href="{{ route('categoryDetail', ['id' => $products->categorys->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $products->categorys->name)))]) }}">{{ $products->categorys->name }}</a>
-                                            </div>
-                                            <h2><a href="{{ route('shopDetail', ['id' => $products->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $products->product_title))) ]) }}">{{ $products->product_title }}</a></h2>
-                                            <div class="product-price">
-                                                @if((float)$products->list_price < 25.00 || (float)$products->list_price > 999.99)
-                                                <a class="quote" href="tel:{{ App\Http\Traits\HelperTrait::returnFlag(59) }}">
-                                                    <p>Call us for Pricing</p>
-                                                    <!--<img src="{{ asset('images/phone-icon.png') }}">-->
-                                                </a>
-                                                @else
-                                                <span>${{ $products->list_price }}</span>
-                                                @endif
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endif
+                                @endif
+                            
+                            <?php 
+                            
+                                // }
+                                
+                            ?>
+                            
+                            
                         @endforeach
                     </div>
                     <div class="pro-pagination-style text-center mt-55">
@@ -163,15 +223,41 @@
                 <div class="sidebar-wrapper sidebar-wrapper-mr1">
                     <div class="sidebar-widget sidebar-widget-wrap sidebar-widget-padding-1 mb-20">
                         <h4 class="sidebar-widget-title">Categories </h4>
+                        <!--<div class="sidebar-categories-list">-->
+                        <!--    <ul>-->
+                        <!--    @foreach ($categories as $category)-->
+                        <!--        <li class="click_menu">-->
+                        <!--            <a href="{{ route('categoryDetail', ['id' => $category->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $category->name)))]) }}">{{ $category->name }}</a>-->
+                        <!--            <span class="click_menu"><i class="fa-solid fa-chevron-down"></i></span>-->
+                        <!--            @if(count($category->subcategory) != 0)-->
+                        <!--            <ul class="shop_show">-->
+                        <!--                @foreach ($category->subcategory as $subcategory)-->
+                        <!--                <li><a href="{{ route('subcategory', ['id' => $subcategory->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $subcategory->name)))]) }}">{{ $subcategory->name }}</a></li>-->
+                        <!--                @endforeach-->
+                        <!--            </ul>-->
+                        <!--            @endif-->
+                        <!--        </li>-->
+                        <!--    @endforeach-->
+                        <!--    </ul>-->
+                        <!--</div>-->
                         <div class="sidebar-categories-list">
                             <ul>
                             @foreach ($categories as $category)
-                                <li>
+                            @php
+                            $slug_cat = preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $category->name)));
+                            @endphp
+                                <li class="click_menu {{ request()->is('category/'.$category->id.'/'.$slug_cat) || request()->is('subcategory/*') && $category->subcategory->pluck('id')->contains(request()->route('id')) ? 'active' : '' }}">
                                     <a href="{{ route('categoryDetail', ['id' => $category->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $category->name)))]) }}">{{ $category->name }}</a>
+                                    <span class="click_menu"><i class="fa-solid fa-chevron-down"></i></span>
                                     @if(count($category->subcategory) != 0)
-                                    <ul>
+                                    <ul class="shop_show">
                                         @foreach ($category->subcategory as $subcategory)
-                                        <li><a href="{{ route('subcategory', ['id' => $subcategory->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $subcategory->name)))]) }}">{{ $subcategory->name }}</a></li>
+                                        @php
+                                        $slug = preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $subcategory->name)));
+                                        @endphp
+                                        <li class="{{ request()->is('subcat/'.$subcategory->id.'/'.$slug) ? 'active' : '' }}">
+                                            <a href="{{ route('subcategory', ['id' => $subcategory->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $subcategory->name)))]) }}">{{ $subcategory->name }}</a>
+                                        </li>
                                         @endforeach
                                     </ul>
                                     @endif
@@ -204,4 +290,38 @@
    
 
     </script>
+    
+<script>
+        $(document).ready(function () {
+  $('.click_menu').click(function () {
+    // Toggle the visibility of the sibling .info-cycle element
+    $(this).siblings('.shop_show').slideToggle('slow')
+    $(this).toggleClass('active')
+  })
+})
+
+$(document).ready(function(){
+    function handleClick(e) {
+        e.preventDefault();
+
+        var href = $(this).attr('href');
+        $('.sidebar-categories-list ul li').removeClass('active');
+
+        $(this).parent('li').addClass('active');
+        $(this).parents('li').addClass('active');
+
+        window.location.href = href;
+    }
+
+    $('.sidebar-categories-list ul li a').click(handleClick);
+
+    $('.sidebar-categories-list ul li.active').each(function() {
+        $(this).parents('li').addClass('active');
+        $(this).find('ul.shop_show').show();
+    });
+});
+
+</script>
 @endsection
+
+

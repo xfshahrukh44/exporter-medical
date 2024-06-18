@@ -8,6 +8,7 @@ rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('new/css/font-cerebrisans.css') }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-11/css/all.min.css" integrity="sha512-98RDZg4fCzeqQfuL8fx1uo+Wh3cSp9TVKWDiBL2nJ3XJahJtAaJyYtmBd2mmj6NChONautL3XCJ8WQTliMcMhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <!-- <link rel="stylesheet" href="{{ asset('new/css/fontawesome-all.min.css') }}"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <!-- <link rel="stylesheet" href="{{ asset('new/css/font-medizin.css') }}"> -->
 <link rel="stylesheet" href="{{ asset('new/css/slick.css') }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" integrity="sha512-TyUaMbYrKFZfQfp+9nQGOEt+vGu4nKzLk0KaV3nFifL3K8n7lzb8DayTzLOK0pNyzxGJzGRSw78e8xqJhURJ3Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
