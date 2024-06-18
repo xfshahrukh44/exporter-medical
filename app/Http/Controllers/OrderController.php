@@ -686,7 +686,7 @@ class OrderController extends Controller
                             "UnitOfMeasurement" => [
                                 "Code" => "LBS"
                             ],
-                            "Weight" => (string) $weight,
+                            "Weight" => (intval($weight) < 1) ? "1" : ((string) $weight),
                         ],
                         "Package" => [
                             "PackagingType" => ["Code" => "02", "Description" => "Package"],
@@ -1461,7 +1461,7 @@ class OrderController extends Controller
 //                                Mail::send('order_invoice', $data, function($message) use ($emails){
                                 Mail::send('order_invoice', $data, function($message) {
                                     $message->from(trim(config('services.mail.username')), 'New Order');
-                                    $message->to([trim(HelperTrait::returnFlag(218)), 'inf.exportermedical@gmail.com'])->subject('New Order');
+                                    $message->to([trim(HelperTrait::returnFlag(218)), 'Info.Exportermedical@gmail.com'])->subject('New Order');
                                 });
                                 
                                 $emails = $request->email;
