@@ -439,10 +439,10 @@
                                             <select name="shipping_method" id="shipping_method" class="billing-address">
                                                 <option value="01">Next Day Air</option>
                                                 <option value="02">2nd Day Air</option>
-                                                <option value="03">Ground</option>
+                                                <option value="03" selected>Ground</option>
                                                 <option value="07">Express</option>
                                                 <option value="08">Expedited</option>
-                                                <option value="11" selected>UPS Standard</option>
+                                                <option value="11">UPS Standard</option>
                                                 <option value="12">3 Day Select</option>
                                                 <option value="13">Next Day Air Saver</option>
                                                 <option value="14">UPS Next Day Air® Early</option>

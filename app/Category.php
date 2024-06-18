@@ -29,7 +29,7 @@ class Category extends Model
     
     public function subcategory()
     {
-        return $this->hasMany('App\Models\SubCategory', 'category', 'id');
+        return $this->hasMany('App\Models\SubCategory', 'category', 'id')->orderBy('name', 'asc');
     }
     
     public function products()

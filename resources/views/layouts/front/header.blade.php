@@ -1,3 +1,36 @@
+
+<style>
+    
+.headerflex {
+    margin-right: 50px !important;
+}
+
+.thirdparty {
+    /*text-align: center;*/
+    /*margin-top: -10px;*/
+}
+
+.animate-image {
+    width: 100px;
+    height: auto;
+    animation: zoomInOut 5s infinite;
+}
+
+@keyframes zoomInOut {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+    
+</style>
+
 <div class="main-wrapper">
     <header class="header-area header-height-2">
         <div class="header-top header-top-ptb-1 d-none d-lg-block">
@@ -69,15 +102,17 @@
                     <div class="header-action-right">
                         <div class="header-action-2">
                             <div class="header-action-icon-2">
-                            <div class="btn-style-1 checkout">
-                                <a  class="font-size-14 btn-1-padding-2" href="https://remsleepdiagnosticscenter.com/">
-                                    <i class="fas fa-info-circle"></i>
-                                    More info
-                                </a>
-                            </div>
+                            
+                            <!--<div class="btn-style-1 checkout">-->
+                            <!--    <a  class="font-size-14 btn-1-padding-2" href="https://remsleepdiagnosticscenter.com/">-->
+                            <!--        <i class="fas fa-info-circle"></i>-->
+                            <!--        More info-->
+                            <!--    </a>-->
+                            <!--</div>-->
+                            
                             <div class="headerflex">
                                  <a target="_blank" href="https://remsleepdiagnosticscenter.com/">
-                                 <img class="thirdparty" src="{{ asset('images/LOGO.png') }}">
+                                 <img class="thirdparty animate-image" src="{{ asset('images/LOGO.png') }}">
                                
                                  </a>
                                 
@@ -183,7 +218,7 @@
                         <div class="header-action-2">
                             <div class="header-action-icon-2 thirdparty-header-action-icon-2">
                                 <a target="_blank" href="https://remsleepdiagnosticscenter.com/">
-                                    <img class="thirdparty" src="{{ asset('images/LOGO.png') }} ">
+                                    <img class="thirdparty animate-image" src="{{ asset('images/LOGO.png') }} ">
                                 </a>
                             </div>
                             <div class="header-action-icon-2">
